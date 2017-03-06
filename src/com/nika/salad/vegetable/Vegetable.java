@@ -9,8 +9,4 @@ public abstract class Vegetable {
     private double carbohydrates;
     private double proteins;
 
-    //list of vitamins
-
-
-
 }
