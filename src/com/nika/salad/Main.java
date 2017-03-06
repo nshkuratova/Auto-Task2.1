@@ -11,7 +11,7 @@ public class Main {
 
         String chosenVegerables;
 
-        System.out.println("Please choose vegetables for salad. Write down corresponding numbers separated by comas. E.g. 1,3,5 ");
+        System.out.println("Please choose vegetables and their weight for salad. Write down corresponding numbers and weight separated by comas. E.g. 1 - 100,3 - 2000,5 - 40 ");
         System.out.println("1. Carrot\n2. Broccoli");
         System.out.print("Your choice for salad: ");
 
@@ -21,7 +21,11 @@ public class Main {
         String[] parts = chosenVegerables.split(",");
 
         for (int i = 0; i < parts.length ; i++) {
-            System.out.println(parts[i]);
+            switch (parts[i]) {
+                case "1":
+
+                    break;
+            }
         }
 
     }
