@@ -12,6 +12,7 @@ public class VegetablePortion {
     public VegetablePortion(Vegetable vegetable, double weight) {
         this.vegetable = vegetable;
         this.weight = weight;
+        //count of vitamins depends on weight
     }
 
     public Vegetable getVegetable() {
