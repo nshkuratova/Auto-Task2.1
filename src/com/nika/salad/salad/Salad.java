@@ -1,7 +1,5 @@
 package com.nika.salad.salad;
 
-import com.nika.salad.vegetable.Vegetable;
-
 import java.util.ArrayList;
 import java.util.List;
 
