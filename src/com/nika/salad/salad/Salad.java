@@ -1,5 +1,7 @@
 package com.nika.salad.salad;
 
+import com.nika.salad.vegetable.Vegetable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +16,7 @@ public class Salad {
     }
 
     public void mixSalad() {
-        System.out.println("Salad is ready.");
+        System.out.println("\nSalad is ready.");
     }
 
     public double countCalories() {
@@ -25,5 +27,13 @@ public class Salad {
         }
 
         return count;
+    }
+
+    public List<Vegetable> getVegetables() {
+        ArrayList<Vegetable> vegetables = new ArrayList<>();
+        for (VegetablePortion vegetablePortion : list) {
+            vegetables.add(vegetablePortion.getVegetable());
+        }
+        return vegetables;
     }
 }

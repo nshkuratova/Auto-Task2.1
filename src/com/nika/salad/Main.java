@@ -67,15 +67,18 @@ public class Main {
         }
         System.out.println("CALORIES: " + salad.countCalories());
 
-        System.out.println("Choose parameter for sorting: \n1. Calories. \n2. Weight. \n3. Proteins \4. Carbohydrates");
+        System.out.println("\nChoose parameter for sorting: \n1. Calories. \n2. Weight. \n3. Proteins \n4. Carbohydrates\n");
 
-        switch (scanner.next()){
+        switch (scanner.next()) {
             case "1":
-
+                // saladSorter.sortBy();
                 break;
             default:
                 System.out.println("Wrong parameter!");
                 break;
         }
+
+
+        System.out.println();
     }
 }

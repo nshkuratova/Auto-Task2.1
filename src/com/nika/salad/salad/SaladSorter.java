@@ -19,9 +19,9 @@ public class SaladSorter {
 
     public List<Vegetable> sortBy(Comparator<Vegetable> vegetableComparator) {
         List<Vegetable> vegetables = new ArrayList<>();
-        //vegetables.;
+        Collections.copy(vegetables, salad.getVegetables());
         Collections.sort(vegetables, vegetableComparator);
-        return null;
+        return vegetables;
     }
 
     public static class CaloriesComparator implements Comparator<Vegetable> {
