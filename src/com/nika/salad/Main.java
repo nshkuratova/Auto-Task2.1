@@ -5,7 +5,13 @@ import com.nika.salad.salad.SaladSorter;
 import com.nika.salad.salad.VegetablePortion;
 import com.nika.salad.vegetable.Vegetable;
 import com.nika.salad.vegetable.cabbage.Broccoli;
+import com.nika.salad.vegetable.cabbage.BrusselsSprouts;
+import com.nika.salad.vegetable.cabbage.Kale;
+import com.nika.salad.vegetable.nightshade.Pepper;
+import com.nika.salad.vegetable.nightshade.Tomato;
+import com.nika.salad.vegetable.rootcrop.Beet;
 import com.nika.salad.vegetable.rootcrop.Carrot;
+import com.nika.salad.vegetable.rootcrop.Radish;
 
 import java.util.Scanner;
 
@@ -17,7 +23,7 @@ public class Main {
         //TODO add comments
 
         System.out.println("Please choose vegetables and their weight for salad.");
-        System.out.println("1. Carrot\n2. Broccoli\n");
+        System.out.println("1. Carrot\n2. Broccoli\n3. BrusselsSprouts\n4. Kale\n5. Pepper\n6. Tomato\n7. Beet\n8. Radish");
 
         Scanner scanner = new Scanner(System.in);
 
@@ -44,6 +50,24 @@ public class Main {
                 case "2":
                     vegetable = new Broccoli();
                     break;
+                case "3":
+                    vegetable = new BrusselsSprouts();
+                    break;
+                case "4":
+                    vegetable = new Kale();
+                    break;
+                case "5":
+                    vegetable = new Pepper();
+                    break;
+                case "6":
+                    vegetable = new Tomato();
+                    break;
+                case "7":
+                    vegetable = new Beet();
+                    break;
+                case "8":
+                    vegetable = new Radish();
+                    break;
                 default:
                     vegetable = null;
                     break;
@@ -67,7 +91,9 @@ public class Main {
         }
         System.out.println("CALORIES: " + salad.countCalories());
 
-        System.out.println("\nChoose parameter for sorting: \n1. Calories. \n2. Weight. \n3. Proteins \n4. Carbohydrates\n");
+        System.out.println("======SORTING======");
+        System.out.println("\nChoose parameter for sorting: \n1. Calories. \n2. Weight. \n3. Proteins \n4. Vitamins\n" +
+                "5. Carbohydrates\n");
 
         switch (scanner.next()) {
             case "1":
@@ -79,6 +105,8 @@ public class Main {
         }
 
 
-        System.out.println();
+        System.out.println("======SEARCH======");
+        System.out.print("---Vitamins: ");
+        System.out.print("\n---Calories: ");
     }
 }
