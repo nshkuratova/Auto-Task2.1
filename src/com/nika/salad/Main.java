@@ -43,20 +43,23 @@ public class Main {
                     vegetable = null;
                     break;
             }
+
             i++;
+
             if (vegetable != null) {
                 vegetablePortion = new VegetablePortion(vegetable, ingredientWeight);
                 salad.addVegetable(vegetablePortion);
+            } else {
+                System.out.println("Wrong vegetable!");
             }
+
             System.out.println("\nPrepare salad?");
+
             if (scanner.next().equalsIgnoreCase("Y")) {
                 salad.mixSalad();
                 return;
             }
         }
-
-
-
 
     }
 }

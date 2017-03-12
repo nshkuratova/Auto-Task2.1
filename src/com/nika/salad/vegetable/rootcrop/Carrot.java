@@ -1,9 +1,13 @@
 package com.nika.salad.vegetable.rootcrop;
 
+import com.nika.salad.vegetable.Vitamins;
+
 /**
  * Created by nika.shkuratova on 04.03.2017.
  */
 public class Carrot extends RootCrop {
 
-    enum CarrotVitamins {A, B1, B2, B3, B6, B9, C, E, H, K}
+    public Carrot() {
+        super(32, 6.9, 1.3, new Vitamins[]{Vitamins.A, Vitamins.B1, Vitamins.B2, Vitamins.B3, Vitamins.B6, Vitamins.B9, Vitamins.C, Vitamins.E, Vitamins.H, Vitamins.K});
+    }
 }

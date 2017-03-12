@@ -17,10 +17,10 @@ public class VegetableFinder {
 
     public Collection<Vegetable> findVegetables(VegetableFilter vegetableFilter) {
         Collection<Vegetable> vegetableCollection = new ArrayList<>();
-        /*if (vegetableFilter.isAccepted()) {
+        /*if (vegetableFilter.isAccepted(vegetablePortion)) {
 
         }*/
-        return null;
+        return vegetableCollection;
     }
 
     public interface VegetableFilter {
