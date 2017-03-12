@@ -18,8 +18,7 @@ public class SaladSorter {
     }
 
     public List<Vegetable> sortBy(Comparator<Vegetable> vegetableComparator) {
-        List<Vegetable> vegetables = new ArrayList<>();
-        Collections.copy(vegetables, salad.getVegetables());
+        List<Vegetable> vegetables = new ArrayList<>(salad.getVegetables());
         Collections.sort(vegetables, vegetableComparator);
         return vegetables;
     }
@@ -28,7 +27,13 @@ public class SaladSorter {
 
         @Override
         public int compare(Vegetable o1, Vegetable o2) {
-            return 0;
+            if (o1.getCalories() < o2.getCalories()) {
+                return -1;
+            } else if (o1.getCalories() > o2.getCalories()) {
+                return 1;
+            } else {
+                return 0;
+            }
         }
     }
 

@@ -10,4 +10,9 @@ public class Carrot extends RootCrop {
     public Carrot() {
         super(0.32, 6.9, 1.3, new Vitamins[]{Vitamins.A, Vitamins.B1, Vitamins.B2, Vitamins.B3, Vitamins.B6, Vitamins.B9, Vitamins.C, Vitamins.E, Vitamins.H, Vitamins.K});
     }
+
+    @Override
+    public String toString() {
+        return "Carrot";
+    }
 }

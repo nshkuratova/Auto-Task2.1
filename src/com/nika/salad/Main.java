@@ -13,6 +13,7 @@ import com.nika.salad.vegetable.rootcrop.Beet;
 import com.nika.salad.vegetable.rootcrop.Carrot;
 import com.nika.salad.vegetable.rootcrop.Radish;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -95,15 +96,22 @@ public class Main {
         System.out.println("\nChoose parameter for sorting: \n1. Calories. \n2. Weight. \n3. Proteins \n4. Vitamins\n" +
                 "5. Carbohydrates\n");
 
+        List<Vegetable> sortedVegetables;
+
         switch (scanner.next()) {
             case "1":
-                // saladSorter.sortBy();
+                sortedVegetables = saladSorter.sortBy(new SaladSorter.CaloriesComparator());
                 break;
             default:
                 System.out.println("Wrong parameter!");
+                sortedVegetables = null;
                 break;
         }
 
+
+        for (Vegetable veg : sortedVegetables) {
+            System.out.println(veg + " " + veg.getCalories());
+        }
 
         System.out.println("======SEARCH======");
         System.out.print("---Vitamins: ");
