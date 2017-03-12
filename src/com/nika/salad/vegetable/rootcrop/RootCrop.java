@@ -8,7 +8,7 @@ import com.nika.salad.vegetable.Vitamins;
  */
 public abstract class RootCrop extends Vegetable {
 
-    public RootCrop(int calories, double carbohydrates, double proteins, Vitamins [] vitamins) {
+    public RootCrop(double calories, double carbohydrates, double proteins, Vitamins[] vitamins) {
         super(calories, carbohydrates, proteins, vitamins);
     }
 }

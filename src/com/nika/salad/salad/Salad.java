@@ -9,15 +9,21 @@ import java.util.List;
 public class Salad {
     private List<VegetablePortion> list = new ArrayList<>();
 
-    public void addVegetable(VegetablePortion vegetablePortion){
+    public void addVegetable(VegetablePortion vegetablePortion) {
         list.add(vegetablePortion);
     }
 
-    public void mixSalad(){
+    public void mixSalad() {
         System.out.println("Salad is ready.");
     }
 
-    public double countCalories(){
-        return 0;
+    public double countCalories() {
+        double count = 0;
+
+        for (VegetablePortion vegetablePortion : list) {
+            count += vegetablePortion.getVegetable().getCalories()* vegetablePortion.getWeight();
+        }
+
+        return count;
     }
 }

@@ -27,7 +27,9 @@ public class Main {
         Vegetable vegetable;
         VegetablePortion vegetablePortion;
 
-        while (true) {
+        boolean flag = true;
+
+        while (flag) {
             System.out.print("Please enter NUMBER of ingredient " + i + ": ");
             ingredient = scanner.next();
             System.out.print("Please enter WEIGHT of ingredient " + i + ": ");
@@ -56,10 +58,10 @@ public class Main {
             System.out.println("\nPrepare salad?");
 
             if (scanner.next().equalsIgnoreCase("Y")) {
+                flag = false;
                 salad.mixSalad();
-                return;
             }
         }
-
+        System.out.println("CALORIES: " + salad.countCalories());
     }
 }

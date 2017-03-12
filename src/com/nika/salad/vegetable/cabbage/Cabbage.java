@@ -8,7 +8,7 @@ import com.nika.salad.vegetable.Vitamins;
  */
 public class Cabbage extends Vegetable {
 
-    public Cabbage(int calories, double carbohydrates, double proteins, Vitamins[] vitamins) {
+    public Cabbage(double calories, double carbohydrates, double proteins, Vitamins[] vitamins) {
         super(calories, carbohydrates, proteins, vitamins);
     }
 }
