@@ -10,7 +10,7 @@ public class Salad {
     private List<VegetablePortion> list = new ArrayList<>();
 
     public void addVegetable(VegetablePortion vegetablePortion){
-
+        list.add(vegetablePortion);
     }
 
     public void mixSalad(){

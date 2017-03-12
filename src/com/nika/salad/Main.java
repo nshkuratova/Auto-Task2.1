@@ -13,11 +13,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // String chosenVegerables;
-
         System.out.println("Please choose vegetables and their weight for salad.");
         System.out.println("1. Carrot\n2. Broccoli\n");
-        //System.out.print("Your choice for salad: ");
 
         Scanner scanner = new Scanner(System.in);
 
@@ -38,34 +35,28 @@ public class Main {
             switch (ingredient) {
                 case "1":
                     vegetable = new Carrot();
-                    vegetablePortion = new VegetablePortion(vegetable, ingredientWeight);
                     break;
                 case "2":
                     vegetable = new Broccoli();
-                    vegetablePortion = new VegetablePortion(vegetable, ingredientWeight);
                     break;
                 default:
+                    vegetable = null;
                     break;
             }
             i++;
-            System.out.println("\nFinish?");
+            if (vegetable != null) {
+                vegetablePortion = new VegetablePortion(vegetable, ingredientWeight);
+                salad.addVegetable(vegetablePortion);
+            }
+            System.out.println("\nPrepare salad?");
             if (scanner.next().equalsIgnoreCase("Y")) {
+                salad.mixSalad();
                 return;
             }
         }
 
 
-       /* chosenVegerables = scanner.next();
 
-        String[] parts = chosenVegerables.split(",");
-
-        for (int i = 0; i < parts.length ; i++) {
-            switch (parts[i]) {
-                case "1":
-
-                    break;
-            }
-        }*/
 
     }
 }
