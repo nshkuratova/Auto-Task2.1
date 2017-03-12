@@ -21,7 +21,7 @@ public class Salad {
         double count = 0;
 
         for (VegetablePortion vegetablePortion : list) {
-            count += vegetablePortion.getVegetable().getCalories()* vegetablePortion.getWeight();
+            count += vegetablePortion.getVegetable().getCalories() * vegetablePortion.getWeight();
         }
 
         return count;

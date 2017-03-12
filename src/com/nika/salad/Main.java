@@ -13,6 +13,9 @@ public class Main {
 
     public static void main(String[] args) {
 
+        //TODO add validation for exceptions
+        //TODO add comments
+
         System.out.println("Please choose vegetables and their weight for salad.");
         System.out.println("1. Carrot\n2. Broccoli\n");
 
@@ -55,7 +58,7 @@ public class Main {
                 System.out.println("Wrong vegetable!");
             }
 
-            System.out.println("\nPrepare salad?");
+            System.out.println("\nPrepare salad? (y\\n)");
 
             if (scanner.next().equalsIgnoreCase("Y")) {
                 flag = false;
@@ -63,5 +66,16 @@ public class Main {
             }
         }
         System.out.println("CALORIES: " + salad.countCalories());
+
+        System.out.println("Choose parameter for sorting: \n1. Calories. \n2. Weight. \n3. Proteins \4. Carbohydrates");
+
+        switch (scanner.next()){
+            case "1":
+
+                break;
+            default:
+                System.out.println("Wrong parameter!");
+                break;
+        }
     }
 }
