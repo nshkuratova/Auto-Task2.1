@@ -7,6 +7,6 @@ import com.nika.salad.vegetable.Vitamins;
  */
 public class Beet extends RootCrop {
     public Beet() {
-        super(43, 8.8, 1.5, new Vitamins[]{Vitamins.A, Vitamins.B1, Vitamins.B2, Vitamins.B3, Vitamins.B5, Vitamins.B6, Vitamins.B9, Vitamins.C, Vitamins.E});
+        super(0.43, 8.8, 1.5, new Vitamins[]{Vitamins.A, Vitamins.B1, Vitamins.B2, Vitamins.B3, Vitamins.B5, Vitamins.B6, Vitamins.B9, Vitamins.C, Vitamins.E});
     }
 }

@@ -23,7 +23,7 @@ public class Main {
         //TODO add comments
 
         System.out.println("Please choose vegetables and their weight for salad.");
-        System.out.println("1. Carrot\n2. Broccoli\n3. BrusselsSprouts\n4. Kale\n5. Pepper\n6. Tomato\n7. Beet\n8. Radish");
+        System.out.println("1. Carrot\n2. Broccoli\n3. BrusselsSprouts\n4. Kale\n5. Pepper\n6. Tomato\n7. Beet\n8. Radish\n");
 
         Scanner scanner = new Scanner(System.in);
 
