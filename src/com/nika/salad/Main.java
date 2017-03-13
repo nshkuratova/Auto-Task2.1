@@ -141,7 +141,7 @@ public class Main {
             switch (scanner.next()) {
                 case "1":
                     System.out.println("Enter Vitamins separated by coma (E.g. A, E, D)");
-
+                    //TODO search by vitamins
                     break;
                 case "2":
                     System.out.print("\nMin calories: ");
@@ -186,9 +186,7 @@ public class Main {
                 System.out.println("\nSEARCH RESULTS");
                 VegetableFinder vegetableFinder = new VegetableFinder(salad);
                 Collection<Vegetable> vegetableCollection = new ArrayList<>(vegetableFinder.findVegetables(vegetableFilters));
-                for (Vegetable veg : vegetableCollection) {
-                    System.out.println(veg);
-                }
+                vegetableCollection.forEach(System.out::println);
             }
         }
 
