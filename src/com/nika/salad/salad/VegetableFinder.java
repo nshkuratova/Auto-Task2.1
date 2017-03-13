@@ -15,16 +15,20 @@ public class VegetableFinder {
         this.salad = salad;
     }
 
-    public Collection<Vegetable> findVegetables(VegetableFilter vegetableFilter) {
+    public Collection<Vegetable> findVegetables(Collection<VegetableFilter> vegetableFilters) {
         Collection<Vegetable> vegetableCollection = new ArrayList<>();
-        /*if (vegetableFilter.isAccepted(vegetablePortion)) {
 
-        }*/
-        return vegetableCollection;
-    }
+        for (VegetableFilter vegetableFilter : vegetableFilters) {
+            for (VegetablePortion vegetablePortion : salad.getVegetablePortions()) {
+                if (vegetableFilter.isAccepted(vegetablePortion)) {
+                    vegetableCollection.add(vegetablePortion.getVegetable());
+                }
+            }
+        }
+            return vegetableCollection;
+        }
 
     public interface VegetableFilter {
-
         boolean isAccepted(VegetablePortion vegetablePortion);
     }
 }

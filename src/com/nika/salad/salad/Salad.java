@@ -36,4 +36,8 @@ public class Salad {
         }
         return vegetables;
     }
+
+    public List<VegetablePortion> getVegetablePortions() {
+        return list;
+    }
 }
