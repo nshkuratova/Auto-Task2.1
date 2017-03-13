@@ -27,9 +27,9 @@ public class SaladSorter {
 
         @Override
         public int compare(Vegetable o1, Vegetable o2) {
-            if (o1.getCalories() < o2.getCalories()) {
+            if (o1.getCalories() > o2.getCalories()) {
                 return -1;
-            } else if (o1.getCalories() > o2.getCalories()) {
+            } else if (o1.getCalories() < o2.getCalories()) {
                 return 1;
             } else {
                 return 0;
@@ -41,9 +41,9 @@ public class SaladSorter {
 
         @Override
         public int compare(Vegetable o1, Vegetable o2) {
-            if (o1.getProteins() < o2.getProteins()) {
+            if (o1.getProteins() > o2.getProteins()) {
                 return -1;
-            } else if (o1.getProteins() > o2.getProteins()) {
+            } else if (o1.getProteins() < o2.getProteins()) {
                 return 1;
             } else {
                 return 0;
@@ -55,9 +55,9 @@ public class SaladSorter {
 
         @Override
         public int compare(Vegetable o1, Vegetable o2) {
-            if (o1.getCarbohydrates() < o2.getCarbohydrates()) {
+            if (o1.getCarbohydrates() > o2.getCarbohydrates()) {
                 return -1;
-            } else if (o1.getCarbohydrates() > o2.getCarbohydrates()) {
+            } else if (o1.getCarbohydrates() < o2.getCarbohydrates()) {
                 return 1;
             } else {
                 return 0;
