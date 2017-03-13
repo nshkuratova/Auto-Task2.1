@@ -13,6 +13,9 @@ import com.nika.salad.vegetable.nightshade.Tomato;
 import com.nika.salad.vegetable.rootcrop.Beet;
 import com.nika.salad.vegetable.rootcrop.Carrot;
 import com.nika.salad.vegetable.rootcrop.Radish;
+import com.nika.salad.vegetablefilter.CaloriesFilter;
+import com.nika.salad.vegetablefilter.CarbohydratesFilter;
+import com.nika.salad.vegetablefilter.ProteinsFilter;
 import com.nika.salad.vegetablefilter.WeightFilter;
 
 import java.util.ArrayList;
@@ -24,7 +27,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //TODO add validation for exceptions
         //TODO add comments
 
         System.out.println("Please choose vegetables and their weight for salad.");
@@ -142,13 +144,28 @@ public class Main {
 
                     break;
                 case "2":
-
+                    System.out.print("\nMin calories: ");
+                    min = scanner.nextDouble();
+                    System.out.print("\nMax calories: ");
+                    max = scanner.nextDouble();
+                    CaloriesFilter caloriesFilter = new CaloriesFilter(min, max);
+                    vegetableFilters.add(caloriesFilter);
                     break;
                 case "3":
-
+                    System.out.print("\nMin proteins: ");
+                    min = scanner.nextDouble();
+                    System.out.print("\nMax proteins: ");
+                    max = scanner.nextDouble();
+                    ProteinsFilter proteinsFilter = new ProteinsFilter(min, max);
+                    vegetableFilters.add(proteinsFilter);
                     break;
                 case "4":
-
+                    System.out.print("\nMin carbohydrates: ");
+                    min = scanner.nextDouble();
+                    System.out.print("\nMax carbohydrates: ");
+                    max = scanner.nextDouble();
+                    CarbohydratesFilter carbohydratesFilter = new CarbohydratesFilter(min, max);
+                    vegetableFilters.add(carbohydratesFilter);
                     break;
                 case "5":
                     System.out.print("\nMin weight: ");
@@ -169,7 +186,7 @@ public class Main {
                 System.out.println("\nSEARCH RESULTS");
                 VegetableFinder vegetableFinder = new VegetableFinder(salad);
                 Collection<Vegetable> vegetableCollection = new ArrayList<>(vegetableFinder.findVegetables(vegetableFilters));
-                for (Vegetable veg: vegetableCollection){
+                for (Vegetable veg : vegetableCollection) {
                     System.out.println(veg);
                 }
             }

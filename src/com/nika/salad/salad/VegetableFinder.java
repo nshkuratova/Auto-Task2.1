@@ -25,8 +25,8 @@ public class VegetableFinder {
                 }
             }
         }
-            return vegetableCollection;
-        }
+        return vegetableCollection;
+    }
 
     public interface VegetableFilter {
         boolean isAccepted(VegetablePortion vegetablePortion);
