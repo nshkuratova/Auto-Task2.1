@@ -92,8 +92,8 @@ public class Main {
         }
         System.out.println("CALORIES: " + salad.countCalories());
 
-        System.out.println("======SORTING======");
-        System.out.println("\nChoose parameter for sorting: \n1. Calories. \n2. Weight. \n3. Proteins \n4. Vitamins\n" +
+        System.out.println("\n======SORTING======");
+        System.out.println("\nChoose parameter for sorting: \n1. Calories.  \n2. Proteins \n3. Carbohydrates\n" +
                 "5. Carbohydrates\n");
 
         List<Vegetable> sortedVegetables;
@@ -101,6 +101,12 @@ public class Main {
         switch (scanner.next()) {
             case "1":
                 sortedVegetables = saladSorter.sortBy(new SaladSorter.CaloriesComparator());
+                break;
+            case "2":
+                sortedVegetables = saladSorter.sortBy(new SaladSorter.ProteintComparator());
+                break;
+            case "3":
+                sortedVegetables = saladSorter.sortBy(new SaladSorter.CarbohydratesComparator());
                 break;
             default:
                 System.out.println("Wrong parameter!");
