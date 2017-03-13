@@ -93,8 +93,7 @@ public class Main {
         System.out.println("CALORIES: " + salad.countCalories());
 
         System.out.println("\n======SORTING======");
-        System.out.println("\nChoose parameter for sorting: \n1. Calories.  \n2. Proteins \n3. Carbohydrates\n" +
-                "5. Carbohydrates\n");
+        System.out.println("\nChoose parameter for sorting: \n1. Calories.  \n2. Proteins \n3. Carbohydrates\n");
 
         List<Vegetable> sortedVegetables;
 
