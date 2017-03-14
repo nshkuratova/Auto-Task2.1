@@ -17,6 +17,6 @@ public class CaloriesFilter implements VegetableFinder.VegetableFilter {
 
     @Override
     public boolean isAccepted(VegetablePortion vegetablePortion) {
-        return vegetablePortion.getVegetable().getCalories() >= minCalories && vegetablePortion.getWeight() <= maxCalories;
+        return vegetablePortion.getVegetable().getCalories() >= minCalories && vegetablePortion.getVegetable().getCalories() <= maxCalories;
     }
 }

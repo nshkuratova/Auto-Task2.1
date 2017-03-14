@@ -130,7 +130,7 @@ public class Main {
         System.out.print("\n2. Calories");
         System.out.print("\n3. Proteins");
         System.out.print("\n4. Carbohydrates");
-        System.out.print("\n5. Weight\n");
+        System.out.print("\n5. Weight\n\n");
 
         flag = true;
         Collection<VegetableFinder.VegetableFilter> vegetableFilters = new ArrayList<>();
@@ -186,7 +186,10 @@ public class Main {
                 System.out.println("\nSEARCH RESULTS");
                 VegetableFinder vegetableFinder = new VegetableFinder(salad);
                 Collection<Vegetable> vegetableCollection = new ArrayList<>(vegetableFinder.findVegetables(vegetableFilters));
-                vegetableCollection.forEach(System.out::println);
+                if (!vegetableCollection.isEmpty()) {
+                    vegetableCollection.forEach(System.out::println);
+                }
+                else System.out.println("No corresponding search results!");
             }
         }
 
