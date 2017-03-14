@@ -7,7 +7,7 @@ import com.nika.salad.salad.VegetablePortion;
 import com.nika.salad.vegetable.Vegetable;
 import com.nika.salad.vegetable.Vitamins;
 import com.nika.salad.vegetable.cabbage.Broccoli;
-import com.nika.salad.vegetable.cabbage.BrusselsSprouts;
+import com.nika.salad.vegetable.cabbage.Brussels;
 import com.nika.salad.vegetable.cabbage.Kale;
 import com.nika.salad.vegetable.nightshade.Pepper;
 import com.nika.salad.vegetable.nightshade.Tomato;
@@ -28,7 +28,7 @@ public class Main {
         //TODO add comments
 
         System.out.println("Please choose vegetables and their weight for salad.");
-        System.out.println("1. Carrot\n2. Broccoli\n3. BrusselsSprouts\n4. Kale\n5. Pepper\n6. Tomato\n7. Beet\n8. Radish");
+        System.out.println("1. Carrot\n2. Broccoli\n3. Brussels\n4. Kale\n5. Pepper\n6. Tomato\n7. Beet\n8. Radish");
 
         Scanner scanner = new Scanner(System.in);
 
@@ -56,7 +56,7 @@ public class Main {
                     vegetable = new Broccoli();
                     break;
                 case "3":
-                    vegetable = new BrusselsSprouts();
+                    vegetable = new Brussels();
                     break;
                 case "4":
                     vegetable = new Kale();
@@ -118,8 +118,9 @@ public class Main {
         }
 
         System.out.println("\nSORTED VEGETABLES:");
+        System.out.println("\nNAME         CALORIES   PROTEINS CARBOHYDRATES");
         for (Vegetable veg : sortedVegetables) {
-            System.out.println(veg + " " + veg.getCalories());
+            System.out.println(veg + "      " + veg.getCalories() + "       " + veg.getProteins() + "       " + veg.getCarbohydrates());
         }
 
         System.out.println("\n======SEARCH======");
@@ -139,7 +140,7 @@ public class Main {
             switch (scanner.next()) {
                 case "1":
                     System.out.println("Enter Vitamins separated by coma (E.g. A, E, D)");
-                    String[] enteredVitamins = scanner.nextLine().toUpperCase().split(",");
+                    String[] enteredVitamins = scanner.next().toUpperCase().split(",");
                     Vitamins[] vit = new Vitamins[enteredVitamins.length];
 
                     for (int j = 0; j < enteredVitamins.length; j++) {
