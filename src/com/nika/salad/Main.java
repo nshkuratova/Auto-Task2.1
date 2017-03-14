@@ -14,10 +14,7 @@ import com.nika.salad.vegetable.nightshade.Tomato;
 import com.nika.salad.vegetable.rootcrop.Beet;
 import com.nika.salad.vegetable.rootcrop.Carrot;
 import com.nika.salad.vegetable.rootcrop.Radish;
-import com.nika.salad.vegetablefilter.CaloriesFilter;
-import com.nika.salad.vegetablefilter.CarbohydratesFilter;
-import com.nika.salad.vegetablefilter.ProteinsFilter;
-import com.nika.salad.vegetablefilter.WeightFilter;
+import com.nika.salad.vegetablefilter.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -142,14 +139,15 @@ public class Main {
             switch (scanner.next()) {
                 case "1":
                     System.out.println("Enter Vitamins separated by coma (E.g. A, E, D)");
-                    //TODO search by vitamins
                     String[] enteredVitamins = scanner.nextLine().toUpperCase().split(",");
-                    Vitamins[] vit;
+                    Vitamins[] vit = new Vitamins[enteredVitamins.length];
 
-                    for (String s : enteredVitamins) {
-
+                    for (int j = 0; j < enteredVitamins.length; j++) {
+                        vit[j] = Vitamins.valueOf(enteredVitamins[j]);
                     }
 
+                    VitaminsFilter vitaminsFilter = new VitaminsFilter(vit);
+                    vegetableFilters.add(vitaminsFilter);
                     break;
                 case "2":
                     System.out.print("\nMin calories: ");
