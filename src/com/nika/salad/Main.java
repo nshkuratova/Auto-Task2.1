@@ -5,6 +5,7 @@ import com.nika.salad.salad.SaladSorter;
 import com.nika.salad.salad.VegetableFinder;
 import com.nika.salad.salad.VegetablePortion;
 import com.nika.salad.vegetable.Vegetable;
+import com.nika.salad.vegetable.Vitamins;
 import com.nika.salad.vegetable.cabbage.Broccoli;
 import com.nika.salad.vegetable.cabbage.BrusselsSprouts;
 import com.nika.salad.vegetable.cabbage.Kale;
@@ -142,6 +143,13 @@ public class Main {
                 case "1":
                     System.out.println("Enter Vitamins separated by coma (E.g. A, E, D)");
                     //TODO search by vitamins
+                    String[] enteredVitamins = scanner.nextLine().toUpperCase().split(",");
+                    Vitamins[] vit;
+
+                    for (String s : enteredVitamins) {
+
+                    }
+
                     break;
                 case "2":
                     System.out.print("\nMin calories: ");
@@ -188,8 +196,7 @@ public class Main {
                 Collection<Vegetable> vegetableCollection = new ArrayList<>(vegetableFinder.findVegetables(vegetableFilters));
                 if (!vegetableCollection.isEmpty()) {
                     vegetableCollection.forEach(System.out::println);
-                }
-                else System.out.println("No corresponding search results!");
+                } else System.out.println("No corresponding search results!");
             }
         }
 
