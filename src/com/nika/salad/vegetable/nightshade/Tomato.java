@@ -7,7 +7,7 @@ import com.nika.salad.vegetable.Vitamins;
  */
 public class Tomato extends Nightshade {
     public Tomato() {
-        super(0.20, 3.7, 1.1, new Vitamins[]{Vitamins.C, Vitamins.E, Vitamins.B3, Vitamins.B5, Vitamins.B6});
+        super(0.20, 3.7, 1.1, new Vitamins[]{Vitamins.C, Vitamins.E, Vitamins.B3, Vitamins.B5, Vitamins.B6}, "yellow");
     }
 
     @Override
