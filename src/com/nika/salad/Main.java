@@ -188,7 +188,7 @@ public class Main {
 
             System.out.println("\nAdd more search parameters? (y\\n)");
 
-            if (scanner.next().equalsIgnoreCase("N")) {
+            if (!scanner.next().equalsIgnoreCase("Y")) {
                 flag = false;
                 System.out.println("\nSEARCH RESULTS");
                 VegetableFinder vegetableFinder = new VegetableFinder(salad);
@@ -197,6 +197,10 @@ public class Main {
                     vegetableCollection.forEach(System.out::println);
                 } else System.out.println("No corresponding search results!");
             }
+            else {
+                System.out.print("\nNext search parameter:");
+            }
+
         }
 
     }

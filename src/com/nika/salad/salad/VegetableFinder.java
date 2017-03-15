@@ -18,9 +18,15 @@ public class VegetableFinder {
     public Collection<Vegetable> findVegetables(Collection<VegetableFilter> vegetableFilters) {
         Collection<Vegetable> vegetableCollection = new ArrayList<>();
 
-        for (VegetableFilter vegetableFilter : vegetableFilters) {
-            for (VegetablePortion vegetablePortion : salad.getVegetablePortions()) {
+        for (VegetablePortion vegetablePortion : salad.getVegetablePortions()) {
+            int count = 0;
+            for (VegetableFilter vegetableFilter : vegetableFilters) {
                 if (vegetableFilter.isAccepted(vegetablePortion)) {
+                    count++;
+                } else {
+                    break;
+                }
+                if (count == vegetableFilters.size()) {
                     vegetableCollection.add(vegetablePortion.getVegetable());
                 }
             }
