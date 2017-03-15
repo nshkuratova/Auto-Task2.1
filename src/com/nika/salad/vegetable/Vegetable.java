@@ -5,10 +5,13 @@ package com.nika.salad.vegetable;
  */
 public abstract class Vegetable {
 
+    //calories in 1 gramm
     private final double calories;
+    //carbohydrates in 1 gramm
     private final double carbohydrates;
+    //proteins in 1 gramm
     private final double proteins;
-    private Vitamins[] vitamins;
+    private final Vitamins[] vitamins;
 
     public Vegetable(double calories, double carbohydrates, double proteins, Vitamins[] vitamins) {
         this.calories = calories;

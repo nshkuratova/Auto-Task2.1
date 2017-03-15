@@ -153,7 +153,7 @@ public class Main {
                 case "2":
                     System.out.print("\nMin calories: ");
                     min = scanner.nextDouble();
-                    System.out.print("\nMax calories: ");
+                    System.out.print("Max calories: ");
                     max = scanner.nextDouble();
                     CaloriesFilter caloriesFilter = new CaloriesFilter(min, max);
                     vegetableFilters.add(caloriesFilter);
@@ -161,7 +161,7 @@ public class Main {
                 case "3":
                     System.out.print("\nMin proteins: ");
                     min = scanner.nextDouble();
-                    System.out.print("\nMax proteins: ");
+                    System.out.print("Max proteins: ");
                     max = scanner.nextDouble();
                     ProteinsFilter proteinsFilter = new ProteinsFilter(min, max);
                     vegetableFilters.add(proteinsFilter);
@@ -169,7 +169,7 @@ public class Main {
                 case "4":
                     System.out.print("\nMin carbohydrates: ");
                     min = scanner.nextDouble();
-                    System.out.print("\nMax carbohydrates: ");
+                    System.out.print("Max carbohydrates: ");
                     max = scanner.nextDouble();
                     CarbohydratesFilter carbohydratesFilter = new CarbohydratesFilter(min, max);
                     vegetableFilters.add(carbohydratesFilter);
@@ -177,7 +177,7 @@ public class Main {
                 case "5":
                     System.out.print("\nMin weight: ");
                     min = scanner.nextDouble();
-                    System.out.print("\nMax weight: ");
+                    System.out.print("Max weight: ");
                     max = scanner.nextDouble();
                     WeightFilter weightFilter = new WeightFilter(min, max);
                     vegetableFilters.add(weightFilter);
@@ -198,7 +198,7 @@ public class Main {
                 } else System.out.println("No corresponding search results!");
             }
             else {
-                System.out.print("\nNext search parameter:");
+                System.out.print("\nNext search parameter: ");
             }
 
         }
