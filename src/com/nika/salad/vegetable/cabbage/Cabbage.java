@@ -8,7 +8,11 @@ import com.nika.salad.vegetable.Vitamins;
  */
 public class Cabbage extends Vegetable {
 
-    public Cabbage(double calories, double carbohydrates, double proteins, Vitamins[] vitamins) {
+    //diameter of a cabbage vegetable in santimeters
+    private double diameter;
+
+    public Cabbage(double calories, double carbohydrates, double proteins, Vitamins[] vitamins, double diameter) {
         super(calories, carbohydrates, proteins, vitamins);
+        this.diameter = diameter;
     }
 }

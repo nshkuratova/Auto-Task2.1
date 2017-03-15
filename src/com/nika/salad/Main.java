@@ -196,8 +196,7 @@ public class Main {
                 if (!vegetableCollection.isEmpty()) {
                     vegetableCollection.forEach(System.out::println);
                 } else System.out.println("No corresponding search results!");
-            }
-            else {
+            } else {
                 System.out.print("\nNext search parameter: ");
             }
 
