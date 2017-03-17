@@ -16,17 +16,21 @@ public class VitaminsFilter implements VegetableFinder.VegetableFilter {
 
     @Override
     public boolean isAccepted(VegetablePortion vegetablePortion) {
-        int count = 0;
         for (int i = 0; i < vitamins.length; i++) {
-            for (Vitamins v : vegetablePortion.getVegetable().getVitamins()) {
-                if (vitamins[i].equals((v))) {
-                    count++;
-                }
+            if (!hasVitamin(vegetablePortion.getVegetable().getVitamins(), vitamins[i])) {
+                return false;
             }
         }
+        return true;
+    }
 
-        if (count == vitamins.length) {
-            return true;
-        } else return false;
+
+    private boolean hasVitamin(Vitamins[] vitamins, Vitamins searchedVitamin) {
+        for (Vitamins v : vitamins) {
+            if (searchedVitamin == v) {
+                return true;
+            }
+        }
+        return false;
     }
 }
