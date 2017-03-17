@@ -140,9 +140,8 @@ public class Main {
             switch (scanner.next()) {
                 case "1":
                     System.out.println("Enter Vitamins separated by coma (E.g. A, E, D)");
-                    scanner.reset();
-                    String temp = scanner.nextLine();
-                    String[] enteredVitamins = temp.toUpperCase().split(",");
+                    scanner.nextLine();
+                    String[] enteredVitamins = scanner.nextLine().toUpperCase().split(",");
                     Vitamins[] vit = new Vitamins[enteredVitamins.length];
 
                     for (int j = 0; j < enteredVitamins.length; j++) {
