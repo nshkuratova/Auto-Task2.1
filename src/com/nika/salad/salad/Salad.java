@@ -2,13 +2,14 @@ package com.nika.salad.salad;
 
 import com.nika.salad.vegetable.Vegetable;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by nika.shkuratova on 04.03.2017.
  */
-public class Salad {
+public class Salad implements Serializable {
     private List<VegetablePortion> list = new ArrayList<>();
 
     public void addVegetable(VegetablePortion vegetablePortion) {
