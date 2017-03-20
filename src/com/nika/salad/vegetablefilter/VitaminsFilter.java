@@ -24,7 +24,6 @@ public class VitaminsFilter implements VegetableFinder.VegetableFilter {
         return true;
     }
 
-
     private boolean hasVitamin(Vitamins[] vitamins, Vitamins searchedVitamin) {
         for (Vitamins v : vitamins) {
             if (searchedVitamin == v) {
