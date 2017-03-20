@@ -6,17 +6,14 @@ import com.nika.salad.salad.VegetablePortion;
 /**
  * Created by nika.shkuratova on 13.03.2017.
  */
-public class CarbohydratesFilter implements VegetableFinder.VegetableFilter {
-    private final double minCarbohydrates;
-    private final double maxCarbohydrate;
+public class CarbohydratesFilter extends BaseFilterClass implements VegetableFinder.VegetableFilter {
 
     public CarbohydratesFilter(double minCarbohydrates, double maxCarbohydrate) {
-        this.minCarbohydrates = minCarbohydrates;
-        this.maxCarbohydrate = maxCarbohydrate;
+        super (minCarbohydrates, maxCarbohydrate);
     }
 
     @Override
     public boolean isAccepted(VegetablePortion vegetablePortion) {
-        return vegetablePortion.getVegetable().getCarbohydrates() >= minCarbohydrates && vegetablePortion.getVegetable().getCarbohydrates() <= maxCarbohydrate;
+        return vegetablePortion.getVegetable().getCarbohydrates() >= min && vegetablePortion.getVegetable().getCarbohydrates() <= max;
     }
 }
