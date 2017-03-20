@@ -91,7 +91,7 @@ public class Main {
             } catch (IllegalArgumentException ex) {
                 System.out.println(ex.getMessage());
             }
-            
+
             System.out.println("\nPrepare salad? (y\\n)");
 
             if (scanner.next().equalsIgnoreCase("Y")) {
@@ -148,74 +148,79 @@ public class Main {
         double min;
         double max;
 
-        while (continueEnteringVitaminsFlag) {
-            switch (scanner.nextInt()) {
-                case 1:
-                    System.out.println("Enter Vitamins separated by coma (E.g. A, E, D)");
-                    scanner.nextLine();
-                    String temp = scanner.nextLine();
-                    temp = temp.replaceAll(" ", "");
-                    String[] enteredVitamins = temp.toUpperCase().split(",");
-                    Vitamins[] vit = new Vitamins[enteredVitamins.length];
+        try {
 
-                    for (int j = 0; j < enteredVitamins.length; j++) {
-                        vit[j] = Vitamins.valueOf(enteredVitamins[j]);
-                    }
+            while (continueEnteringVitaminsFlag) {
+                switch (scanner.nextInt()) {
+                    case 1:
+                        System.out.println("Enter Vitamins separated by coma (E.g. A, E, D)");
+                        scanner.nextLine();
+                        String temp = scanner.nextLine();
+                        temp = temp.replaceAll(" ", "");
+                        String[] enteredVitamins = temp.toUpperCase().split(",");
+                        Vitamins[] vit = new Vitamins[enteredVitamins.length];
 
-                    VitaminsFilter vitaminsFilter = new VitaminsFilter(vit);
-                    vegetableFilters.add(vitaminsFilter);
-                    break;
-                case 2:
-                    System.out.print("\nMin calories: ");
-                    min = scanner.nextDouble();
-                    System.out.print("Max calories: ");
-                    max = scanner.nextDouble();
-                    CaloriesFilter caloriesFilter = new CaloriesFilter(min, max);
-                    vegetableFilters.add(caloriesFilter);
-                    break;
-                case 3:
-                    System.out.print("\nMin proteins: ");
-                    min = scanner.nextDouble();
-                    System.out.print("Max proteins: ");
-                    max = scanner.nextDouble();
-                    ProteinsFilter proteinsFilter = new ProteinsFilter(min, max);
-                    vegetableFilters.add(proteinsFilter);
-                    break;
-                case 4:
-                    System.out.print("\nMin carbohydrates: ");
-                    min = scanner.nextDouble();
-                    System.out.print("Max carbohydrates: ");
-                    max = scanner.nextDouble();
-                    CarbohydratesFilter carbohydratesFilter = new CarbohydratesFilter(min, max);
-                    vegetableFilters.add(carbohydratesFilter);
-                    break;
-                case 5:
-                    System.out.print("\nMin weight: ");
-                    min = scanner.nextDouble();
-                    System.out.print("Max weight: ");
-                    max = scanner.nextDouble();
-                    WeightFilter weightFilter = new WeightFilter(min, max);
-                    vegetableFilters.add(weightFilter);
-                    break;
-                default:
-                    break;
+                        for (int j = 0; j < enteredVitamins.length; j++) {
+                            vit[j] = Vitamins.valueOf(enteredVitamins[j]);
+                        }
+
+                        VitaminsFilter vitaminsFilter = new VitaminsFilter(vit);
+                        vegetableFilters.add(vitaminsFilter);
+                        break;
+                    case 2:
+                        System.out.print("\nMin calories: ");
+                        min = scanner.nextDouble();
+                        System.out.print("Max calories: ");
+                        max = scanner.nextDouble();
+                        CaloriesFilter caloriesFilter = new CaloriesFilter(min, max);
+                        vegetableFilters.add(caloriesFilter);
+                        break;
+                    case 3:
+                        System.out.print("\nMin proteins: ");
+                        min = scanner.nextDouble();
+                        System.out.print("Max proteins: ");
+                        max = scanner.nextDouble();
+                        ProteinsFilter proteinsFilter = new ProteinsFilter(min, max);
+                        vegetableFilters.add(proteinsFilter);
+                        break;
+                    case 4:
+                        System.out.print("\nMin carbohydrates: ");
+                        min = scanner.nextDouble();
+                        System.out.print("Max carbohydrates: ");
+                        max = scanner.nextDouble();
+                        CarbohydratesFilter carbohydratesFilter = new CarbohydratesFilter(min, max);
+                        vegetableFilters.add(carbohydratesFilter);
+                        break;
+                    case 5:
+                        System.out.print("\nMin weight: ");
+                        min = scanner.nextDouble();
+                        System.out.print("Max weight: ");
+                        max = scanner.nextDouble();
+                        WeightFilter weightFilter = new WeightFilter(min, max);
+                        vegetableFilters.add(weightFilter);
+                        break;
+                    default:
+                        break;
+                }
             }
+        } catch (IllegalArgumentException ex) {
+            System.out.println(ex.getMessage());
+        }
 
-            System.out.println("\nAdd more search parameters? (y\\n)");
+        System.out.println("\nAdd more search parameters? (y\\n)");
 
-            if (!scanner.next().equalsIgnoreCase("Y")) {
-                continueEnteringVitaminsFlag = false;
-                System.out.println("\nSEARCH RESULTS");
-                VegetableFinder vegetableFinder = new VegetableFinder(salad);
-                Collection<Vegetable> vegetableCollection = new ArrayList<>(vegetableFinder.findVegetables(vegetableFilters));
-                if (!vegetableCollection.isEmpty()) {
-                    vegetableCollection.forEach(System.out::println);
-                } else System.out.println("No corresponding search results!");
-            } else {
-                System.out.print("\nNext search parameter: ");
-            }
-
+        if (!scanner.next().equalsIgnoreCase("Y")) {
+            continueEnteringVitaminsFlag = false;
+            System.out.println("\nSEARCH RESULTS");
+            VegetableFinder vegetableFinder = new VegetableFinder(salad);
+            Collection<Vegetable> vegetableCollection = new ArrayList<>(vegetableFinder.findVegetables(vegetableFilters));
+            if (!vegetableCollection.isEmpty()) {
+                vegetableCollection.forEach(System.out::println);
+            } else System.out.println("No corresponding search results!");
+        } else {
+            System.out.print("\nNext search parameter: ");
         }
 
     }
+
 }

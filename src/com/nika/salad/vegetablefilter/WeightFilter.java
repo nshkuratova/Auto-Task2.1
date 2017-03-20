@@ -14,6 +14,6 @@ public class WeightFilter extends BaseFilterClass implements VegetableFinder.Veg
 
     @Override
     public boolean isAccepted(VegetablePortion vegetablePortion) {
-        return vegetablePortion.getWeight() >= min&& vegetablePortion.getWeight() <= max;
+        return vegetablePortion.getWeight() >= min && vegetablePortion.getWeight() <= max;
     }
 }

@@ -9,7 +9,7 @@ import com.nika.salad.salad.VegetablePortion;
 public class CarbohydratesFilter extends BaseFilterClass implements VegetableFinder.VegetableFilter {
 
     public CarbohydratesFilter(double minCarbohydrates, double maxCarbohydrate) {
-        super (minCarbohydrates, maxCarbohydrate);
+        super(minCarbohydrates, maxCarbohydrate);
     }
 
     @Override
