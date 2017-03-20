@@ -2,10 +2,12 @@ package com.nika.salad.salad;
 
 import com.nika.salad.vegetable.Vegetable;
 
+import java.io.Serializable;
+
 /**
  * Created by nika.shkuratova on 04.03.2017.
  */
-public class VegetablePortion {
+public class VegetablePortion implements Serializable {
     private final Vegetable vegetable;
     private final double weight;
 

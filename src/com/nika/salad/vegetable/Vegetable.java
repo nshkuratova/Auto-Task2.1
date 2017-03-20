@@ -1,9 +1,11 @@
 package com.nika.salad.vegetable;
 
+import java.io.Serializable;
+
 /**
  * Created by nika.shkuratova on 04.03.2017.
  */
-public abstract class Vegetable {
+public abstract class Vegetable implements Serializable {
 
     //calories in 1 gramm
     private final double calories;
