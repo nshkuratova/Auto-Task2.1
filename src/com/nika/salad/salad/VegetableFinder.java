@@ -16,7 +16,7 @@ public class VegetableFinder {
     }
 
     public Collection<Vegetable> findVegetables(Collection<VegetableFilter> vegetableFilters) {
-        if (vegetableFilters == null){
+        if (vegetableFilters == null) {
             throw new NullPointerException("No search parameters are chosen.");
         }
 

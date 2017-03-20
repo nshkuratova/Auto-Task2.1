@@ -86,15 +86,17 @@ public class Main {
                 ingredientNumber++;
                 vegetablePortion = new VegetablePortion(vegetable, ingredientWeight);
                 salad.addVegetable(vegetablePortion);
-            } catch (WrongIngredientException e) {
-                System.out.println(e.getMessage());
+            } catch (WrongIngredientException ex) {
+                System.out.println(ex.getMessage());
+            } catch (IllegalArgumentException ex) {
+                System.out.println(ex.getMessage());
             }
-
+            
             System.out.println("\nPrepare salad? (y\\n)");
 
             if (scanner.next().equalsIgnoreCase("Y")) {
                 continueEnteringIngredientsFlag = false;
-                if (salad.getVegetables().isEmpty()){
+                if (salad.getVegetables().isEmpty()) {
                     throw new NoVegetablesInSaladException("No vegetables in salad");
                 }
                 salad.mixSalad();
@@ -109,24 +111,28 @@ public class Main {
 
         List<Vegetable> sortedVegetables;
 
-        switch (scanner.next()) {
-            case "1":
-                sortedVegetables = saladSorter.sortBy(new SaladSorter.CaloriesComparator());
-                break;
-            case "2":
-                sortedVegetables = saladSorter.sortBy(new SaladSorter.ProteintComparator());
-                break;
-            case "3":
-                sortedVegetables = saladSorter.sortBy(new SaladSorter.CarbohydratesComparator());
-                break;
-            default:
-                throw new WrongSortTypeException("Wrong sorting parameter");
-        }
+        try {
+            switch (scanner.next()) {
+                case "1":
+                    sortedVegetables = saladSorter.sortBy(new SaladSorter.CaloriesComparator());
+                    break;
+                case "2":
+                    sortedVegetables = saladSorter.sortBy(new SaladSorter.ProteintComparator());
+                    break;
+                case "3":
+                    sortedVegetables = saladSorter.sortBy(new SaladSorter.CarbohydratesComparator());
+                    break;
+                default:
+                    throw new WrongSortTypeException("Wrong sorting parameter");
+            }
 
-        System.out.println("\nSORTED VEGETABLES:");
-        System.out.println("\nNAME         CALORIES   PROTEINS CARBOHYDRATES");
-        for (Vegetable veg : sortedVegetables) {
-            System.out.println(veg + "      " + veg.getCalories() + "       " + veg.getProteins() + "       " + veg.getCarbohydrates());
+            System.out.println("\nSORTED VEGETABLES:");
+            System.out.println("\nNAME         CALORIES   PROTEINS CARBOHYDRATES");
+            for (Vegetable veg : sortedVegetables) {
+                System.out.println(veg + "      " + veg.getCalories() + "       " + veg.getProteins() + "       " + veg.getCarbohydrates());
+            }
+        } catch (WrongSortTypeException ex) {
+            System.out.println(ex.getMessage());
         }
 
         System.out.println("\n======SEARCH======");

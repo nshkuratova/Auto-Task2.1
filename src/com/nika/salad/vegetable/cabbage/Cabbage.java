@@ -13,6 +13,9 @@ public class Cabbage extends Vegetable {
 
     public Cabbage(double calories, double carbohydrates, double proteins, Vitamins[] vitamins, double diameter) {
         super(calories, carbohydrates, proteins, vitamins);
+        if (diameter <= 0){
+            throw new IllegalArgumentException("Diameter can't be less or equal to zero!");
+        }
         this.diameter = diameter;
     }
 }
