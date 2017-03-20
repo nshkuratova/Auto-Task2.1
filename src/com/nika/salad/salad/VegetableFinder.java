@@ -19,17 +19,12 @@ public class VegetableFinder {
         Collection<Vegetable> vegetableCollection = new ArrayList<>();
 
         for (VegetablePortion vegetablePortion : salad.getVegetablePortions()) {
-            int count = 0;
             for (VegetableFilter vegetableFilter : vegetableFilters) {
-                if (vegetableFilter.isAccepted(vegetablePortion)) {
-                    count++;
-                } else {
-                    break;
-                }
-                if (count == vegetableFilters.size()) {
-                    vegetableCollection.add(vegetablePortion.getVegetable());
+                if (!vegetableFilter.isAccepted(vegetablePortion)) {
+                    return new ArrayList<>();
                 }
             }
+            vegetableCollection.add(vegetablePortion.getVegetable());
         }
         return vegetableCollection;
     }

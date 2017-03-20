@@ -12,6 +12,9 @@ public class Salad {
     private List<VegetablePortion> list = new ArrayList<>();
 
     public void addVegetable(VegetablePortion vegetablePortion) {
+        if (vegetablePortion == null) {
+            throw new NullPointerException("Empty vegetable portion");
+        }
         list.add(vegetablePortion);
     }
 
