@@ -41,6 +41,6 @@ public class Salad {
     }
 
     public List<VegetablePortion> getVegetablePortions() {
-        return list;
+        return new ArrayList(list);
     }
 }

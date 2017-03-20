@@ -14,6 +14,9 @@ public class SaladSorter {
     private Salad salad;
 
     public SaladSorter(Salad salad) {
+        if (salad == null){
+            throw new NullPointerException("Salad is null!");
+        }
         this.salad = salad;
     }
 
@@ -21,7 +24,7 @@ public class SaladSorter {
         if (vegetableComparator == null) {
             throw new NullPointerException("Sorting parameter is not chosen.");
         }
-        List<Vegetable> vegetables = new ArrayList<>(salad.getVegetables());
+        List<Vegetable> vegetables = salad.getVegetables();
         Collections.sort(vegetables, vegetableComparator);
         return vegetables;
     }

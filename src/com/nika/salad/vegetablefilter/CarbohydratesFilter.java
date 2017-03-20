@@ -6,7 +6,7 @@ import com.nika.salad.salad.VegetablePortion;
 /**
  * Created by nika.shkuratova on 13.03.2017.
  */
-public class CarbohydratesFilter extends BaseFilterClass implements VegetableFinder.VegetableFilter {
+public class CarbohydratesFilter extends BaseFilterClass {
 
     public CarbohydratesFilter(double minCarbohydrates, double maxCarbohydrate) {
         super(minCarbohydrates, maxCarbohydrate);

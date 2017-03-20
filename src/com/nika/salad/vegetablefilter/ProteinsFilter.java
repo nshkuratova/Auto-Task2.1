@@ -6,7 +6,7 @@ import com.nika.salad.salad.VegetablePortion;
 /**
  * Created by nika.shkuratova on 13.03.2017.
  */
-public class ProteinsFilter extends BaseFilterClass implements VegetableFinder.VegetableFilter {
+public class ProteinsFilter extends BaseFilterClass {
 
     public ProteinsFilter(double minProteins, double maxProteins) {
         super(minProteins, maxProteins);

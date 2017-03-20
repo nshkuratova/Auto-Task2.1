@@ -1,9 +1,11 @@
 package com.nika.salad.vegetablefilter;
 
+import com.nika.salad.salad.VegetableFinder;
+
 /**
  * Created by nika_shkuratava on 3/20/2017.
  */
-public class BaseFilterClass {
+public abstract class BaseFilterClass implements VegetableFinder.VegetableFilter {
 
     protected final double min;
     protected final double max;

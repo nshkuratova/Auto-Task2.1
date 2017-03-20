@@ -13,6 +13,9 @@ public abstract class RootCrop extends Vegetable {
 
     public RootCrop(double calories, double carbohydrates, double proteins, Vitamins[] vitamins, double lengthofRootcropPart) {
         super(calories, carbohydrates, proteins, vitamins);
+        if (lengthofRootcropPart <= 0){
+            throw new IllegalArgumentException("The length can't be zero or negative!");
+        }
         this.lengthofRootcropPart = lengthofRootcropPart;
     }
 }

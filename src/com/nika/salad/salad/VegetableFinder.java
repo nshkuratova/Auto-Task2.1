@@ -12,6 +12,9 @@ public class VegetableFinder {
     private final Salad salad;
 
     public VegetableFinder(Salad salad) {
+        if (salad == null) {
+            throw new NullPointerException("Salad is null!");
+        }
         this.salad = salad;
     }
 
