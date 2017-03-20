@@ -18,6 +18,9 @@ public class SaladSorter {
     }
 
     public List<Vegetable> sortBy(Comparator<Vegetable> vegetableComparator) {
+        if (vegetableComparator == null){
+            throw new NullPointerException("Sorting parameter is not chosen.");
+        }
         List<Vegetable> vegetables = new ArrayList<>(salad.getVegetables());
         Collections.sort(vegetables, vegetableComparator);
         return vegetables;

@@ -1,5 +1,8 @@
 package com.nika.salad;
 
+import com.nika.salad.exceptions.NoVegetablesInSaladException;
+import com.nika.salad.exceptions.WrongIngredientException;
+import com.nika.salad.exceptions.WrongSortTypeException;
 import com.nika.salad.salad.Salad;
 import com.nika.salad.salad.SaladSorter;
 import com.nika.salad.salad.VegetableFinder;
@@ -23,7 +26,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws WrongIngredientException, WrongSortTypeException, NoVegetablesInSaladException {
 
         //TODO add comments
 
@@ -36,7 +39,7 @@ public class Main {
         SaladSorter saladSorter = new SaladSorter(salad);
 
         int ingredientNumber = 1;
-        String ingredient;
+        int ingredient;
         double ingredientWeight;
         Vegetable vegetable;
         VegetablePortion vegetablePortion;
@@ -45,55 +48,60 @@ public class Main {
 
         while (continueEnteringIngredientsFlag) {
             System.out.print("\nPlease enter NUMBER of ingredient " + ingredientNumber + ": ");
-            ingredient = scanner.next();
+            ingredient = scanner.nextInt();
             System.out.print("Please enter WEIGHT of ingredient " + ingredientNumber + ": ");
             ingredientWeight = scanner.nextDouble();
-            switch (ingredient) {
-                case "1":
-                    vegetable = new Carrot();
-                    break;
-                case "2":
-                    vegetable = new Broccoli();
-                    break;
-                case "3":
-                    vegetable = new Brussels();
-                    break;
-                case "4":
-                    vegetable = new Kale();
-                    break;
-                case "5":
-                    vegetable = new Pepper();
-                    break;
-                case "6":
-                    vegetable = new Tomato();
-                    break;
-                case "7":
-                    vegetable = new Beet();
-                    break;
-                case "8":
-                    vegetable = new Radish();
-                    break;
-                default:
-                    vegetable = null;
-                    break;
-            }
 
-            ingredientNumber++;
+            try {
 
-            if (vegetable != null) {
+                switch (ingredient) {
+                    case 1:
+                        vegetable = new Carrot();
+                        break;
+                    case 2:
+                        vegetable = new Broccoli();
+                        break;
+                    case 3:
+                        vegetable = new Brussels();
+                        break;
+                    case 4:
+                        vegetable = new Kale();
+                        break;
+                    case 5:
+                        vegetable = new Pepper();
+                        break;
+                    case 6:
+                        vegetable = new Tomato();
+                        break;
+                    case 7:
+                        vegetable = new Beet();
+                        break;
+                    case 8:
+                        vegetable = new Radish();
+                        break;
+                    default:
+                        throw new WrongIngredientException("\nWrong ingredient");
+                }
+
+                ingredientNumber++;
                 vegetablePortion = new VegetablePortion(vegetable, ingredientWeight);
                 salad.addVegetable(vegetablePortion);
-            } else {
-                System.out.println("Wrong vegetable!");
+            } catch (WrongIngredientException e) {
+                System.out.println(e.getMessage());
             }
 
             System.out.println("\nPrepare salad? (y\\n)");
 
             if (scanner.next().equalsIgnoreCase("Y")) {
                 continueEnteringIngredientsFlag = false;
+                if (salad.getVegetables().isEmpty()){
+                    throw new NoVegetablesInSaladException("No vegetables in salad");
+                }
                 salad.mixSalad();
             }
         }
+
+
         System.out.println("CALORIES: " + salad.countCalories());
 
         System.out.println("\n======SORTING======");
@@ -112,9 +120,7 @@ public class Main {
                 sortedVegetables = saladSorter.sortBy(new SaladSorter.CarbohydratesComparator());
                 break;
             default:
-                System.out.println("Wrong parameter!");
-                sortedVegetables = null;
-                break;
+                throw new WrongSortTypeException("Wrong sorting parameter");
         }
 
         System.out.println("\nSORTED VEGETABLES:");
@@ -137,8 +143,8 @@ public class Main {
         double max;
 
         while (continueEnteringVitaminsFlag) {
-            switch (scanner.next()) {
-                case "1":
+            switch (scanner.nextInt()) {
+                case 1:
                     System.out.println("Enter Vitamins separated by coma (E.g. A, E, D)");
                     scanner.nextLine();
                     String temp = scanner.nextLine();
@@ -153,7 +159,7 @@ public class Main {
                     VitaminsFilter vitaminsFilter = new VitaminsFilter(vit);
                     vegetableFilters.add(vitaminsFilter);
                     break;
-                case "2":
+                case 2:
                     System.out.print("\nMin calories: ");
                     min = scanner.nextDouble();
                     System.out.print("Max calories: ");
@@ -161,7 +167,7 @@ public class Main {
                     CaloriesFilter caloriesFilter = new CaloriesFilter(min, max);
                     vegetableFilters.add(caloriesFilter);
                     break;
-                case "3":
+                case 3:
                     System.out.print("\nMin proteins: ");
                     min = scanner.nextDouble();
                     System.out.print("Max proteins: ");
@@ -169,7 +175,7 @@ public class Main {
                     ProteinsFilter proteinsFilter = new ProteinsFilter(min, max);
                     vegetableFilters.add(proteinsFilter);
                     break;
-                case "4":
+                case 4:
                     System.out.print("\nMin carbohydrates: ");
                     min = scanner.nextDouble();
                     System.out.print("Max carbohydrates: ");
@@ -177,7 +183,7 @@ public class Main {
                     CarbohydratesFilter carbohydratesFilter = new CarbohydratesFilter(min, max);
                     vegetableFilters.add(carbohydratesFilter);
                     break;
-                case "5":
+                case 5:
                     System.out.print("\nMin weight: ");
                     min = scanner.nextDouble();
                     System.out.print("Max weight: ");

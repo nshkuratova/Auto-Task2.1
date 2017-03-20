@@ -16,6 +16,10 @@ public class VegetableFinder {
     }
 
     public Collection<Vegetable> findVegetables(Collection<VegetableFilter> vegetableFilters) {
+        if (vegetableFilters == null){
+            throw new NullPointerException("No search parameters are chosen.");
+        }
+
         Collection<Vegetable> vegetableCollection = new ArrayList<>();
 
         for (VegetablePortion vegetablePortion : salad.getVegetablePortions()) {
