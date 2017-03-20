@@ -35,18 +35,18 @@ public class Main {
         Salad salad = new Salad();
         SaladSorter saladSorter = new SaladSorter(salad);
 
-        int i = 1;
+        int ingredientNumber = 1;
         String ingredient;
         double ingredientWeight;
         Vegetable vegetable;
         VegetablePortion vegetablePortion;
 
-        boolean flag = true;
+        boolean continueEnteringIngredientsFlag = true;
 
-        while (flag) {
-            System.out.print("\nPlease enter NUMBER of ingredient " + i + ": ");
+        while (continueEnteringIngredientsFlag) {
+            System.out.print("\nPlease enter NUMBER of ingredient " + ingredientNumber + ": ");
             ingredient = scanner.next();
-            System.out.print("Please enter WEIGHT of ingredient " + i + ": ");
+            System.out.print("Please enter WEIGHT of ingredient " + ingredientNumber + ": ");
             ingredientWeight = scanner.nextDouble();
             switch (ingredient) {
                 case "1":
@@ -78,7 +78,7 @@ public class Main {
                     break;
             }
 
-            i++;
+            ingredientNumber++;
 
             if (vegetable != null) {
                 vegetablePortion = new VegetablePortion(vegetable, ingredientWeight);
@@ -90,7 +90,7 @@ public class Main {
             System.out.println("\nPrepare salad? (y\\n)");
 
             if (scanner.next().equalsIgnoreCase("Y")) {
-                flag = false;
+                continueEnteringIngredientsFlag = false;
                 salad.mixSalad();
             }
         }
@@ -131,12 +131,12 @@ public class Main {
         System.out.print("\n4. Carbohydrates");
         System.out.print("\n5. Weight\n\n");
 
-        flag = true;
+        boolean continueEnteringVitaminsFlag = true;
         Collection<VegetableFinder.VegetableFilter> vegetableFilters = new ArrayList<>();
         double min;
         double max;
 
-        while (flag) {
+        while (continueEnteringVitaminsFlag) {
             switch (scanner.next()) {
                 case "1":
                     System.out.println("Enter Vitamins separated by coma (E.g. A, E, D)");
@@ -192,7 +192,7 @@ public class Main {
             System.out.println("\nAdd more search parameters? (y\\n)");
 
             if (!scanner.next().equalsIgnoreCase("Y")) {
-                flag = false;
+                continueEnteringVitaminsFlag = false;
                 System.out.println("\nSEARCH RESULTS");
                 VegetableFinder vegetableFinder = new VegetableFinder(salad);
                 Collection<Vegetable> vegetableCollection = new ArrayList<>(vegetableFinder.findVegetables(vegetableFilters));
