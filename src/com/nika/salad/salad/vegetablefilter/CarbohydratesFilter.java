@@ -1,6 +1,5 @@
-package com.nika.salad.vegetablefilter;
+package com.nika.salad.salad.vegetablefilter;
 
-import com.nika.salad.salad.VegetableFinder;
 import com.nika.salad.salad.VegetablePortion;
 
 /**

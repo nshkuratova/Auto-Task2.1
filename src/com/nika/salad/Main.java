@@ -17,7 +17,7 @@ import com.nika.salad.vegetable.nightshade.Tomato;
 import com.nika.salad.vegetable.rootcrop.Beet;
 import com.nika.salad.vegetable.rootcrop.Carrot;
 import com.nika.salad.vegetable.rootcrop.Radish;
-import com.nika.salad.vegetablefilter.*;
+import com.nika.salad.salad.vegetablefilter.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
