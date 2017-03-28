@@ -2,6 +2,8 @@ package com.nika.salad.salad;
 
 import com.nika.salad.vegetable.Vegetable;
 
+import java.io.IOException;
+import java.io.ObjectStreamException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +42,18 @@ public class Salad implements Serializable {
         }
         return vegetables;
     }
+
+    private void writeObject(java.io.ObjectOutputStream stream) throws IOException{}
+
+    private void readObject(java.io.ObjectInputStream stream) throws IOException, ClassNotFoundException {
+        Vegetable vegetable = (Vegetable) stream.readObject();
+        double weight = (double) stream.readDouble();
+        VegetablePortion vegetablePortion = new VegetablePortion(vegetable, weight);
+        this.addVegetable(vegetablePortion);
+    }
+
+    private void readObjectNoData() throws ObjectStreamException {}
+
 
     public List<VegetablePortion> getVegetablePortions() {
         return new ArrayList(list);
