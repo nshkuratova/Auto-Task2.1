@@ -13,8 +13,7 @@ public abstract class BaseFilterClass implements VegetableFinder.VegetableFilter
     public BaseFilterClass(double min, double max) {
         if (min > max) {
             throw new IllegalArgumentException("Min value can't be bigger than max value!");
-        }
-        else if(min < 0 || max < 0){
+        } else if (min < 0 || max < 0) {
             throw new IllegalArgumentException("Min or max values can't be negative!");
         }
 

@@ -2,7 +2,6 @@ package com.nika.salad.salad;
 
 import com.nika.salad.vegetable.Vegetable;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -14,7 +13,7 @@ public class SaladSorter {
     private Salad salad;
 
     public SaladSorter(Salad salad) {
-        if (salad == null){
+        if (salad == null) {
             throw new NullPointerException("Salad is null!");
         }
         this.salad = salad;

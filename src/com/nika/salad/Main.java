@@ -19,7 +19,8 @@ import com.nika.salad.vegetable.rootcrop.Beet;
 import com.nika.salad.vegetable.rootcrop.Carrot;
 import com.nika.salad.vegetable.rootcrop.Radish;
 
-import java.io.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -42,17 +43,11 @@ public class Main {
 
         if (method == 2) {
 
-            FileInputStream fis = new FileInputStream("D://salad.txt");
-            ObjectInputStream oos = new ObjectInputStream(fis);
-            salad = (Salad)oos.readObject();
-
-            oos.close();
-
 
             if (salad.getVegetables().isEmpty()) {
                 throw new NoVegetablesInSaladException("No vegetables in salad");
             }
-                salad.mixSalad();
+            salad.mixSalad();
         } else {
             System.out.println("Please choose vegetables and their weight for salad.");
             System.out.println("1. Carrot\n2. Broccoli\n3. Brussels\n4. Kale\n5. Pepper\n6. Tomato\n7. Beet\n8. Radish");
