@@ -29,7 +29,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws WrongIngredientException, WrongSortTypeException, NoVegetablesInSaladException, FileNotFoundException, IOException, ClassNotFoundException {
+    public static void main(String[] args) throws WrongIngredientException, WrongSortTypeException, NoVegetablesInSaladException, IOException, ClassNotFoundException {
 
         //TODO add comments
         System.out.println("Please select the way to work with the app: \n1. Console,\n2. File,\n3. Database \n");
