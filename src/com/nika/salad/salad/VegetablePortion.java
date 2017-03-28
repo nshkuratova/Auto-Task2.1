@@ -2,8 +2,6 @@ package com.nika.salad.salad;
 
 import com.nika.salad.vegetable.Vegetable;
 
-import java.io.Serializable;
-
 /**
  * Created by nika.shkuratova on 04.03.2017.
  */

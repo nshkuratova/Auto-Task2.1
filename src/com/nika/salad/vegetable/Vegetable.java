@@ -1,7 +1,5 @@
 package com.nika.salad.vegetable;
 
-import java.io.Serializable;
-
 /**
  * Created by nika.shkuratova on 04.03.2017.
  */

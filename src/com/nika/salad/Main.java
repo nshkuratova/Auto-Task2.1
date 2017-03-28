@@ -40,74 +40,74 @@ public class Main {
 
         Salad salad = new Salad();
 
-            if (inputMethod == 1) {
-                System.out.println("\nPlease choose vegetables and their weight for salad.");
-                System.out.println("1. Carrot\n2. Broccoli\n3. Brussels\n4. Kale\n5. Pepper\n6. Tomato\n7. Beet\n8. Radish");
+        if (inputMethod == 1) {
+            System.out.println("\nPlease choose vegetables and their weight for salad.");
+            System.out.println("1. Carrot\n2. Broccoli\n3. Brussels\n4. Kale\n5. Pepper\n6. Tomato\n7. Beet\n8. Radish");
 
-                int ingredientNumber = 1;
-                int ingredient;
-                double ingredientWeight;
-                Vegetable vegetable;
-                VegetablePortion vegetablePortion;
+            int ingredientNumber = 1;
+            int ingredient;
+            double ingredientWeight;
+            Vegetable vegetable;
+            VegetablePortion vegetablePortion;
 
-                boolean continueEnteringIngredientsFlag = true;
+            boolean continueEnteringIngredientsFlag = true;
 
-                while (continueEnteringIngredientsFlag) {
-                    System.out.print("\nPlease enter NUMBER of ingredient " + ingredientNumber + ": ");
-                    ingredient = scanner.nextInt();
-                    System.out.print("Please enter WEIGHT of ingredient " + ingredientNumber + ": ");
-                    ingredientWeight = scanner.nextDouble();
+            while (continueEnteringIngredientsFlag) {
+                System.out.print("\nPlease enter NUMBER of ingredient " + ingredientNumber + ": ");
+                ingredient = scanner.nextInt();
+                System.out.print("Please enter WEIGHT of ingredient " + ingredientNumber + ": ");
+                ingredientWeight = scanner.nextDouble();
 
-                    try {
-                        switch (ingredient) {
-                            case 1:
-                                vegetable = new Carrot();
-                                break;
-                            case 2:
-                                vegetable = new Broccoli();
-                                break;
-                            case 3:
-                                vegetable = new Brussels();
-                                break;
-                            case 4:
-                                vegetable = new Kale();
-                                break;
-                            case 5:
-                                vegetable = new Pepper();
-                                break;
-                            case 6:
-                                vegetable = new Tomato();
-                                break;
-                            case 7:
-                                vegetable = new Beet();
-                                break;
-                            case 8:
-                                vegetable = new Radish();
-                                break;
-                            default:
-                                throw new WrongIngredientException("\nWrong ingredient");
-                        }
-
-                        ingredientNumber++;
-                        vegetablePortion = new VegetablePortion(vegetable, ingredientWeight);
-                        salad.addVegetable(vegetablePortion);
-                    } catch (WrongIngredientException ex) {
-                        System.out.println(ex.getMessage());
-                    } catch (IllegalArgumentException ex) {
-                        System.out.println(ex.getMessage());
+                try {
+                    switch (ingredient) {
+                        case 1:
+                            vegetable = new Carrot();
+                            break;
+                        case 2:
+                            vegetable = new Broccoli();
+                            break;
+                        case 3:
+                            vegetable = new Brussels();
+                            break;
+                        case 4:
+                            vegetable = new Kale();
+                            break;
+                        case 5:
+                            vegetable = new Pepper();
+                            break;
+                        case 6:
+                            vegetable = new Tomato();
+                            break;
+                        case 7:
+                            vegetable = new Beet();
+                            break;
+                        case 8:
+                            vegetable = new Radish();
+                            break;
+                        default:
+                            throw new WrongIngredientException("\nWrong ingredient");
                     }
 
-                    System.out.println("\nPrepare salad? (y\\n)");
+                    ingredientNumber++;
+                    vegetablePortion = new VegetablePortion(vegetable, ingredientWeight);
+                    salad.addVegetable(vegetablePortion);
+                } catch (WrongIngredientException ex) {
+                    System.out.println(ex.getMessage());
+                } catch (IllegalArgumentException ex) {
+                    System.out.println(ex.getMessage());
+                }
 
-                    if (scanner.next().equalsIgnoreCase("Y")) {
-                        continueEnteringIngredientsFlag = false;
-                    }
+                System.out.println("\nPrepare salad? (y\\n)");
+
+                if (scanner.next().equalsIgnoreCase("Y")) {
+                    continueEnteringIngredientsFlag = false;
                 }
             }
-            else if (inputMethod == 2) {
-                FileDAO file = new FileDAO();
-                salad = file.readSalad();
-            }
+        } else if (inputMethod == 2) {
+            FileDAO file = new FileDAO();
+            salad = file.readSalad();
+            file.saveSalad(salad);
+        }
 
 
         if (salad.getVegetables().isEmpty()) {

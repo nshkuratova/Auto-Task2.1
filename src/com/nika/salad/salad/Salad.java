@@ -2,7 +2,6 @@ package com.nika.salad.salad;
 
 import com.nika.salad.vegetable.Vegetable;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,5 +44,20 @@ public class Salad {
 
     public List<VegetablePortion> getVegetablePortions() {
         return new ArrayList(list);
+    }
+
+    @Override
+    public String toString() {
+
+        String returnValue = "";
+
+        for (int i = 0; i < list.size(); i++) {
+            if (i == list.size() - 1) {
+                returnValue += list.get(i).getVegetable().toString() + ": " + list.get(i).getWeight();
+            } else {
+                returnValue += list.get(i).getVegetable().toString() + ": " + list.get(i).getWeight() + "\r\n";
+            }
+        }
+        return returnValue;
     }
 }
