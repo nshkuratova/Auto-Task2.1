@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * Created by nika.shkuratova on 04.03.2017.
  */
-public class VegetablePortion implements Serializable {
+public class VegetablePortion {
     private final Vegetable vegetable;
     private final double weight;
 

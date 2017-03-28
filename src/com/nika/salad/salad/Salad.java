@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by nika.shkuratova on 04.03.2017.
  */
-public class Salad implements Serializable {
+public class Salad {
     private List<VegetablePortion> list = new ArrayList<>();
 
     private String name;

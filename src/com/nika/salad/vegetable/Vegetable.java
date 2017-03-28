@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by nika.shkuratova on 04.03.2017.
  */
-public abstract class Vegetable implements Serializable {
+public abstract class Vegetable {
 
     //calories in 1 gramm
     private final double calories;
