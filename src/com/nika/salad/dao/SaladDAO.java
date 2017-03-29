@@ -1,4 +1,4 @@
-package com.nika.salad.salad.dao;
+package com.nika.salad.dao;
 
 import com.nika.salad.salad.Salad;
 import org.json.simple.parser.ParseException;
