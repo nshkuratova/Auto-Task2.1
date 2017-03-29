@@ -51,7 +51,7 @@ public class FileDAO implements SaladDAO {
                     case "broccoli":
                         vegetable = new Broccoli();
                         break;
-                    case "bbrussels":
+                    case "brussels":
                         vegetable = new Brussels();
                         break;
                     case "kale":

@@ -8,6 +8,7 @@ import com.nika.salad.salad.SaladSorter;
 import com.nika.salad.salad.VegetableFinder;
 import com.nika.salad.salad.VegetablePortion;
 import com.nika.salad.salad.dao.FileDAO;
+import com.nika.salad.salad.dao.JsonDAO;
 import com.nika.salad.salad.vegetablefilter.*;
 import com.nika.salad.vegetable.Vegetable;
 import com.nika.salad.vegetable.Vitamins;
@@ -19,6 +20,7 @@ import com.nika.salad.vegetable.nightshade.Tomato;
 import com.nika.salad.vegetable.rootcrop.Beet;
 import com.nika.salad.vegetable.rootcrop.Carrot;
 import com.nika.salad.vegetable.rootcrop.Radish;
+import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,10 +30,10 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws WrongIngredientException, WrongSortTypeException, NoVegetablesInSaladException, IOException, ClassNotFoundException {
+    public static void main(String[] args) throws WrongIngredientException, WrongSortTypeException, NoVegetablesInSaladException, IOException, ClassNotFoundException, ParseException {
 
         //TODO add comments
-        System.out.println("Please select the way to work with the app: \n1. Console,\n2. File,\n3. Database \n");
+        System.out.println("Please select the way to work with the app: \n1. Console,\n2. File,\n3. JSON \n4. Database \n");
         Scanner scanner = new Scanner(System.in);
         int inputMethod;
         //TODO exception handling
@@ -49,6 +51,10 @@ public class Main {
                 FileDAO file = new FileDAO();
                 salad = file.readSalad();
                 file.saveSalad(salad);
+            }
+            else if (inputMethod == 3){
+                JsonDAO json = new JsonDAO();
+                salad = json.readSalad();
             }
 
             // if there are no ingredients in salad we can't continue work with the app
