@@ -30,11 +30,8 @@ public class FileDAO implements SaladDAO {
             ArrayList<VegetablePortion> vegPortionsList = new ArrayList<>(salad.getVegetablePortions());
 
             for (int i = 0; i < vegPortionsList.size(); i++) {
-                if (i == vegPortionsList.size() - 1) {
-                    saladToString += vegPortionsList.get(i).getVegetable().toString() + ": " + vegPortionsList.get(i).getWeight();
-                } else {
-                    saladToString += vegPortionsList.get(i).getVegetable().toString() + ": " + vegPortionsList.get(i).getWeight() + "\r\n";
-                }
+                saladToString += vegPortionsList.get(i).getVegetable().toString() + ": " + vegPortionsList.get(i).getWeight();
+                if (i != vegPortionsList.size() - 1) saladToString += "\r\n";
             }
 
             try {
