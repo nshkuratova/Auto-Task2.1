@@ -22,7 +22,7 @@ public class FileDAO implements SaladDAO {
 
     public void saveSalad(Salad salad) {
         try {
-            PrintWriter out = new PrintWriter(new File("d://salad.txt"));
+            PrintWriter out = new PrintWriter(new File("./resources/salad.txt"));
             try {
                 out.print(salad.toString());
             } finally {
@@ -34,7 +34,7 @@ public class FileDAO implements SaladDAO {
     }
 
     public Salad readSalad() throws IOException {
-        BufferedReader in = new BufferedReader(new FileReader("D://salad.txt"));
+        BufferedReader in = new BufferedReader(new FileReader("./resources/salad.txt"));
         String s;
         String[] array;
         Salad salad = new Salad();

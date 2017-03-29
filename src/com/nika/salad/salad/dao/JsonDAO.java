@@ -1,4 +1,5 @@
 package com.nika.salad.salad.dao;
+
 import com.nika.salad.exceptions.WrongIngredientException;
 import com.nika.salad.salad.Salad;
 import com.nika.salad.salad.VegetablePortion;
@@ -11,32 +12,31 @@ import com.nika.salad.vegetable.nightshade.Tomato;
 import com.nika.salad.vegetable.rootcrop.Beet;
 import com.nika.salad.vegetable.rootcrop.Carrot;
 import com.nika.salad.vegetable.rootcrop.Radish;
-import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
 import java.io.FileReader;
 import java.io.IOException;
 
 /**
  * Created by nika.shkuratova on 28.03.2017.
  */
-public class JsonDAO {
-    public void saveSalad(Salad salad) {
-    }
+public class JsonDAO implements SaladDAO {
 
     //TODO Exceptions handling
-    public Salad readSalad() throws IOException, ParseException{
+    public Salad readSalad() throws IOException, ParseException {
 
         Salad salad = new Salad();
 
         JSONParser parser = new JSONParser();
-        JSONArray array = (JSONArray) parser.parse(new FileReader("d://salad.json"));
+        JSONArray array = (JSONArray) parser.parse(new FileReader("./resources/salad.json"));
 
-        for (Object obj: array){
+        for (Object obj : array) {
             JSONObject json_veg = (JSONObject) obj;
             Vegetable vegetable;
-            String name = (String)json_veg.get("Name");
+            String name = (String) json_veg.get("Name");
             String weight = (String) json_veg.get("Weight");
             try {
                 switch (name.toLowerCase()) {

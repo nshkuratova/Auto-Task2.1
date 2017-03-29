@@ -51,8 +51,7 @@ public class Main {
                 FileDAO file = new FileDAO();
                 salad = file.readSalad();
                 file.saveSalad(salad);
-            }
-            else if (inputMethod == 3){
+            } else if (inputMethod == 3) {
                 JsonDAO json = new JsonDAO();
                 salad = json.readSalad();
             }
