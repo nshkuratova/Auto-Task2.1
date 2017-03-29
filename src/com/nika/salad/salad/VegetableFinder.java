@@ -25,13 +25,18 @@ public class VegetableFinder {
 
         Collection<Vegetable> vegetableCollection = new ArrayList<>();
 
+        boolean flag;
+
         for (VegetablePortion vegetablePortion : salad.getVegetablePortions()) {
+            flag = true;
             for (VegetableFilter vegetableFilter : vegetableFilters) {
                 if (!vegetableFilter.isAccepted(vegetablePortion)) {
-                    return new ArrayList<>();
+                    flag = false;
                 }
             }
-            vegetableCollection.add(vegetablePortion.getVegetable());
+            if (flag) {
+                vegetableCollection.add(vegetablePortion.getVegetable());
+            }
         }
         return vegetableCollection;
     }
