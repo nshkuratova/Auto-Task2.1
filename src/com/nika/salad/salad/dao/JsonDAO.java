@@ -76,4 +76,6 @@ public class JsonDAO implements SaladDAO {
         }
         return salad;
     }
+
+    public void saveSalad(Salad salad){}
 }

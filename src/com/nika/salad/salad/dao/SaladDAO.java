@@ -10,4 +10,6 @@ import java.io.IOException;
  */
 public interface SaladDAO {
     public Salad readSalad() throws IOException, ParseException;
+
+    public void saveSalad(Salad salad);
 }
