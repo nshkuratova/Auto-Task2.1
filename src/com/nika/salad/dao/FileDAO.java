@@ -14,6 +14,7 @@ import com.nika.salad.vegetable.rootcrop.Carrot;
 import com.nika.salad.vegetable.rootcrop.Radish;
 
 import java.io.*;
+import java.util.ArrayList;
 
 /**
  * Created by nika.shkuratova on 28.03.2017.
@@ -23,8 +24,21 @@ public class FileDAO implements SaladDAO {
     public void saveSalad(Salad salad) {
         try {
             PrintWriter out = new PrintWriter(new File("./resources/salad.txt"));
+
+            String saladToString = "";
+
+            ArrayList<VegetablePortion> vegPortionsList = new ArrayList<>(salad.getVegetablePortions());
+
+            for (int i = 0; i < vegPortionsList.size(); i++) {
+                if (i == vegPortionsList.size() - 1) {
+                    saladToString += vegPortionsList.get(i).getVegetable().toString() + ": " + vegPortionsList.get(i).getWeight();
+                } else {
+                    saladToString += vegPortionsList.get(i).getVegetable().toString() + ": " + vegPortionsList.get(i).getWeight() + "\r\n";
+                }
+            }
+
             try {
-                out.print(salad.toString());
+                out.print(saladToString);
             } finally {
                 out.close();
             }

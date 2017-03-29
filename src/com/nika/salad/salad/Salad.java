@@ -46,18 +46,4 @@ public class Salad {
         return new ArrayList(list);
     }
 
-    @Override
-    public String toString() {
-
-        String returnValue = "";
-
-        for (int i = 0; i < list.size(); i++) {
-            if (i == list.size() - 1) {
-                returnValue += list.get(i).getVegetable().toString() + ": " + list.get(i).getWeight();
-            } else {
-                returnValue += list.get(i).getVegetable().toString() + ": " + list.get(i).getWeight() + "\r\n";
-            }
-        }
-        return returnValue;
-    }
 }
