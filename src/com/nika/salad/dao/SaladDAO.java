@@ -1,4 +1,4 @@
-package com.nika.salad.salad.dao;
+package com.nika.salad.dao;
 
 import com.nika.salad.salad.Salad;
 import org.json.simple.parser.ParseException;
@@ -10,4 +10,6 @@ import java.io.IOException;
  */
 public interface SaladDAO {
     public Salad readSalad() throws IOException, ParseException;
+
+    public void saveSalad(Salad salad);
 }

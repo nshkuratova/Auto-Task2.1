@@ -1,4 +1,4 @@
-package com.nika.salad.salad.dao;
+package com.nika.salad.dao;
 
 import com.nika.salad.exceptions.WrongIngredientException;
 import com.nika.salad.salad.Salad;
@@ -76,4 +76,6 @@ public class JsonDAO implements SaladDAO {
         }
         return salad;
     }
+
+    public void saveSalad(Salad salad){}
 }
