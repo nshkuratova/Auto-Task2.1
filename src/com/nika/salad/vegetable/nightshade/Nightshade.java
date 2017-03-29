@@ -8,7 +8,7 @@ import com.nika.salad.vegetable.Vitamins;
  */
 public class Nightshade extends Vegetable {
     //color of flowers of Nightshade class of Vegetables
-    private String colorofFlowers;
+    private final String colorofFlowers;
 
     public Nightshade(double calories, double carbohydrates, double proteins, Vitamins[] vitamins, String colorofFlowers) {
         super(calories, carbohydrates, proteins, vitamins);

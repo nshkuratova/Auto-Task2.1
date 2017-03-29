@@ -11,7 +11,12 @@ import java.util.List;
 public class Salad {
     private List<VegetablePortion> list = new ArrayList<>();
 
+    private String name;
+
     public void addVegetable(VegetablePortion vegetablePortion) {
+        if (vegetablePortion == null) {
+            throw new NullPointerException("Empty vegetable portion");
+        }
         list.add(vegetablePortion);
     }
 
@@ -38,6 +43,21 @@ public class Salad {
     }
 
     public List<VegetablePortion> getVegetablePortions() {
-        return list;
+        return new ArrayList(list);
+    }
+
+    @Override
+    public String toString() {
+
+        String returnValue = "";
+
+        for (int i = 0; i < list.size(); i++) {
+            if (i == list.size() - 1) {
+                returnValue += list.get(i).getVegetable().toString() + ": " + list.get(i).getWeight();
+            } else {
+                returnValue += list.get(i).getVegetable().toString() + ": " + list.get(i).getWeight() + "\r\n";
+            }
+        }
+        return returnValue;
     }
 }

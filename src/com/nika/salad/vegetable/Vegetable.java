@@ -14,6 +14,9 @@ public abstract class Vegetable {
     private final Vitamins[] vitamins;
 
     public Vegetable(double calories, double carbohydrates, double proteins, Vitamins[] vitamins) {
+        if (calories < 0 || carbohydrates < 0 || proteins < 0) {
+            throw new IllegalArgumentException("Attribute can't have negative value.");
+        }
         this.calories = calories;
         this.carbohydrates = carbohydrates;
         this.proteins = proteins;

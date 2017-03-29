@@ -2,7 +2,6 @@ package com.nika.salad.salad;
 
 import com.nika.salad.vegetable.Vegetable;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -14,11 +13,17 @@ public class SaladSorter {
     private Salad salad;
 
     public SaladSorter(Salad salad) {
+        if (salad == null) {
+            throw new NullPointerException("Salad is null!");
+        }
         this.salad = salad;
     }
 
     public List<Vegetable> sortBy(Comparator<Vegetable> vegetableComparator) {
-        List<Vegetable> vegetables = new ArrayList<>(salad.getVegetables());
+        if (vegetableComparator == null) {
+            throw new NullPointerException("Sorting parameter is not chosen.");
+        }
+        List<Vegetable> vegetables = salad.getVegetables();
         Collections.sort(vegetables, vegetableComparator);
         return vegetables;
     }

@@ -12,23 +12,30 @@ public class VegetableFinder {
     private final Salad salad;
 
     public VegetableFinder(Salad salad) {
+        if (salad == null) {
+            throw new NullPointerException("Salad is null!");
+        }
         this.salad = salad;
     }
 
     public Collection<Vegetable> findVegetables(Collection<VegetableFilter> vegetableFilters) {
+        if (vegetableFilters == null) {
+            throw new NullPointerException("No search parameters are chosen.");
+        }
+
         Collection<Vegetable> vegetableCollection = new ArrayList<>();
 
+        boolean flag;
+
         for (VegetablePortion vegetablePortion : salad.getVegetablePortions()) {
-            int count = 0;
+            flag = true;
             for (VegetableFilter vegetableFilter : vegetableFilters) {
-                if (vegetableFilter.isAccepted(vegetablePortion)) {
-                    count++;
-                } else {
-                    break;
+                if (!vegetableFilter.isAccepted(vegetablePortion)) {
+                    flag = false;
                 }
-                if (count == vegetableFilters.size()) {
-                    vegetableCollection.add(vegetablePortion.getVegetable());
-                }
+            }
+            if (flag) {
+                vegetableCollection.add(vegetablePortion.getVegetable());
             }
         }
         return vegetableCollection;

@@ -1,4 +1,4 @@
-package com.nika.salad.vegetablefilter;
+package com.nika.salad.salad.vegetablefilter;
 
 import com.nika.salad.salad.VegetableFinder;
 import com.nika.salad.salad.VegetablePortion;
@@ -23,7 +23,6 @@ public class VitaminsFilter implements VegetableFinder.VegetableFilter {
         }
         return true;
     }
-
 
     private boolean hasVitamin(Vitamins[] vitamins, Vitamins searchedVitamin) {
         for (Vitamins v : vitamins) {

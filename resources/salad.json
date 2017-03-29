@@ -1,0 +1,15 @@
+[{
+	"Name": "Carrot",
+	"Weight": "100"
+}, {
+	"Name": "Kale",
+	"Weight": "200"
+},
+{
+	"Name": "Broccoli",
+	"Weight": "500"
+},
+{
+	"Name": "Beet",
+	"Weight": "5"
+}]
