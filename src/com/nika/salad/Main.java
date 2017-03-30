@@ -1,5 +1,6 @@
 package com.nika.salad;
 
+import com.nika.salad.dao.DatabaseDAO;
 import com.nika.salad.exceptions.NoVegetablesInSaladException;
 import com.nika.salad.exceptions.WrongIngredientException;
 import com.nika.salad.exceptions.WrongSortTypeException;
@@ -54,6 +55,10 @@ public class Main {
             } else if (inputMethod == 3) {
                 JsonDAO json = new JsonDAO();
                 salad = json.readSalad();
+            }
+            else if (inputMethod == 4) {
+                DatabaseDAO database = new DatabaseDAO();
+                salad = database.readSalad();
             }
 
             // if there are no ingredients in salad we can't continue work with the app
