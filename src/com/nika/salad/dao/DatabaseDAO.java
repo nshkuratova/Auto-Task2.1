@@ -20,7 +20,7 @@ public class DatabaseDAO {
             String veg;
 
             while (resultSet.next()) {
-                veg = resultSet.getString("vegetables");
+                veg = resultSet.getString("name");
                 System.out.println(veg);
             }
 
