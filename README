@@ -1,0 +1,2 @@
+1. In MySQL schema with the name 'salad' should be created first. Then scripts from sql folder should be executed in the schema.
+2. Libs from "libs" folder should be added to the project "Add as a library".

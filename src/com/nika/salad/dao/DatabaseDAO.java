@@ -16,7 +16,7 @@ public class DatabaseDAO {
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/salad", "root", "root");
             Statement st = connection.createStatement();
-            ResultSet resultSet = st.executeQuery("SELECT * FROM vegetables;");
+            ResultSet resultSet = st.executeQuery("SELECT vegetables.name, weight from vegetable_portions join vegetables on vegetables.id_veg = vegetable_portions.id_veg;");
             String veg;
 
             while (resultSet.next()) {
