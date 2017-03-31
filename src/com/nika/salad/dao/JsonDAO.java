@@ -14,7 +14,7 @@ import java.io.IOException;
 /**
  * Created by nika.shkuratova on 28.03.2017.
  */
-public class JsonDAO extends DataSourceDAO implements SaladDAO {
+public class JsonDAO extends BaseDAO {
 
     //TODO Exceptions handling
     public Salad readSalad() throws IOException, ParseException {

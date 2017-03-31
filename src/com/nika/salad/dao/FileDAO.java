@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Created by nika.shkuratova on 28.03.2017.
  */
-public class FileDAO extends DataSourceDAO implements SaladDAO {
+public class FileDAO extends BaseDAO {
 
     public void saveSalad(Salad salad) {
         try {
