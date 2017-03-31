@@ -7,7 +7,7 @@ import java.sql.*;
 /**
  * Created by nika.shkuratova on 28.03.2017.
  */
-public class DatabaseDAO {
+public class DatabaseDAO implements SaladDAO {
     public void saveSalad(Salad salad) {
     }
 
