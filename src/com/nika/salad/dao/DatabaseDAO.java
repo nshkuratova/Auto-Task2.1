@@ -23,8 +23,6 @@ public class DatabaseDAO implements SaladDAO {
                 veg = resultSet.getString("name");
                 System.out.println(veg);
             }
-
-
             st.close();
             connection.close();
         } catch (SQLException ex) {
