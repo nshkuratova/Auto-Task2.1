@@ -33,11 +33,9 @@ public class Main {
 
     public static void main(String[] args) throws WrongIngredientException, WrongSortTypeException, NoVegetablesInSaladException, IOException, ClassNotFoundException, ParseException {
 
-        //TODO add comments
         System.out.println("Please select the way to work with the app: \n1. Console,\n2. File,\n3. JSON \n4. Database \n");
         Scanner scanner = new Scanner(System.in);
         int inputMethod;
-        //TODO exception handling
         try {
             inputMethod = scanner.nextInt();
 
