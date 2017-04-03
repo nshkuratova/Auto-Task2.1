@@ -45,7 +45,7 @@ public class Main {
 
             if (inputMethod == 1) {
                 //method used to receive salad ingredients from console
-                salad = enterFromConsole(scanner, salad);
+                enterFromConsole(scanner, salad);
             }
             //method used to receive salad ingredients from file
             else if (inputMethod == 2) {
@@ -200,19 +200,18 @@ public class Main {
                 enterMoreSearchParameters = false;
                 System.out.println("\nSEARCH RESULTS");
                 VegetableFinder vegetableFinder = new VegetableFinder(salad);
-                Collection<Vegetable> vegetableCollection = new ArrayList<>(vegetableFinder.findVegetables(vegetableFilters));
+                Collection<Vegetable> vegetableCollection = vegetableFinder.findVegetables(vegetableFilters);
                 if (!vegetableCollection.isEmpty()) {
                     vegetableCollection.forEach(System.out::println);
                 } else System.out.println("No corresponding search results!");
             } else {
                 System.out.print("\nNext search parameter: ");
             }
-
         }
     }
 
 
-    public static Salad enterFromConsole(Scanner scanner, Salad salad) {
+    public static void enterFromConsole(Scanner scanner, Salad salad) {
         System.out.println("\nPlease choose vegetables and their weight for salad.");
         System.out.println("1. Carrot\n2. Broccoli\n3. Brussels\n4. Kale\n5. Pepper\n6. Tomato\n7. Beet\n8. Radish");
 
@@ -275,6 +274,5 @@ public class Main {
                 continueEnteringIngredientsFlag = false;
             }
         }
-        return salad;
     }
 }
