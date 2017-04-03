@@ -7,12 +7,22 @@ import com.nika.salad.vegetable.Vegetable;
 import java.sql.*;
 
 /**
- * Created by nika.shkuratova on 28.03.2017.
+ * DatabaseDAO class is used to work with databases.
+ * The class implements common interface
+ * The main purpose of the class is to read data from the database and save data in the database.
  */
 public class DatabaseDAO extends BaseDAO {
+    /**
+     * This method is to be implemented.
+     * @param salad
+     */
     public void saveSalad(Salad salad) {
     }
 
+    /**
+     *
+     * @return
+     */
     public Salad readSalad() {
         Salad salad = new Salad();
         try {

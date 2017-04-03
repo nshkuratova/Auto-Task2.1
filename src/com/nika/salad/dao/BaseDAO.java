@@ -14,9 +14,11 @@ import com.nika.salad.vegetable.rootcrop.Radish;
 
 /**
  * BaseDAO is the abstract base class for all classes to work with external sources of data.
- * The class is implemeted to share the same method of creating a Vegetable sub-class object
+ * The class implements common interface DataSourceDAO which provides methods to read data from external sources and to save data into external sources.
+ * The purpose of the class is to share the same method of creating a Vegetable sub-class object
  * depending on the string with the name of the vegetable which comes from the external source (file, json, database).
  * @author Nika Shkuratava
+ * @see DataSourceDAO
  */
 public abstract class BaseDAO implements DataSourceDAO {
 
