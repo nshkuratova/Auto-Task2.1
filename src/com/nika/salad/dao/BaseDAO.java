@@ -11,11 +11,21 @@ import com.nika.salad.vegetable.rootcrop.Beet;
 import com.nika.salad.vegetable.rootcrop.Carrot;
 import com.nika.salad.vegetable.rootcrop.Radish;
 
+
 /**
- * Created by nika_shkuratava on 3/31/2017.
+ * BaseDAO is the abstract base class for all classes to work with external sources of data.
+ * The class is implemeted to share the same method of creating a Vegetable sub-class object
+ * depending on the string with the name of the vegetable which comes from the external source (file, json, database).
+ * @author Nika Shkuratava
  */
 public abstract class BaseDAO implements DataSourceDAO {
 
+    /**
+     * Creates an object of Vegetable sub-class depending on the string with the name of a vegetable which
+     * comes from the external source (file, json, database).
+     * @param name the name of the vegetable which comes from the external source
+     * @return an object of the specified Vegetable
+     */
     public Vegetable createVegetableByName(String name) {
         Vegetable vegetable = null;
         try {
