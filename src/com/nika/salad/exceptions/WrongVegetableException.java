@@ -1,7 +1,7 @@
 package com.nika.salad.exceptions;
 
 /**
- * Created by nika_shkuratava on 3/20/2017.
+ * A custom user exception which is thrown when non-existent vegetable name was passed from the external source
  */
 public class WrongVegetableException extends Exception {
 

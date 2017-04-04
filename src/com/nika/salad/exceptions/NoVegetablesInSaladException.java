@@ -1,7 +1,7 @@
 package com.nika.salad.exceptions;
 
 /**
- * Created by nika_shkuratava on 3/20/2017.
+ * A custom user exception which is thrown if the salad is empty ( no vegetables are added to the salad) and it's impossible to continue work with the Salad object.
  */
 public class NoVegetablesInSaladException extends Exception {
     public NoVegetablesInSaladException() {

@@ -32,7 +32,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws WrongVegetableException, WrongSortTypeException, NoVegetablesInSaladException, IOException, ClassNotFoundException, ParseException {
+    public static void main(String[] args){
 
         System.out.println("How do you want to add vegetables to a salad? \n1. Console,\n2. File,\n3. JSON \n4. Database \n");
         Scanner scanner = new Scanner(System.in);

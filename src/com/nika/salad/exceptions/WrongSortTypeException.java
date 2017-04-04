@@ -1,7 +1,7 @@
 package com.nika.salad.exceptions;
 
 /**
- * Created by nika_shkuratava on 3/20/2017.
+ * A custom user exception which is thrown if wrong sorting parameter is chosen by the user.
  */
 public class WrongSortTypeException extends Exception {
 
