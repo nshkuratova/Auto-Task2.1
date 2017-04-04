@@ -59,7 +59,7 @@ public abstract class BaseDAO implements DataSourceDAO {
                 vegetable = new Radish();
                 break;
             default:
-                throw new WrongVegetableException("\nWrong ingredient");
+                throw new WrongVegetableException("\nWrong vegetable name.");
         }
         return vegetable;
     }
