@@ -2,6 +2,7 @@ package com.nika.salad.dao;
 
 import com.nika.salad.exceptions.WrongVegetableException;
 import com.nika.salad.salad.Salad;
+import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 
@@ -16,8 +17,9 @@ public interface DataSourceDAO {
      * @return an instance of salad (a list of vegetables and their weigh which are represented as vegetable portions)
      * @throws WrongVegetableException if non-existent vegetable name was passed from the external source
      * @throws IOException             If an input or output exception occurred
+     * @throws ParseException          If an error while parsing json has occurred
      */
-    public Salad readSalad() throws WrongVegetableException, IOException;
+    public Salad readSalad() throws WrongVegetableException, IOException, ParseException;
 
     /**
      * Method is used to save data to an external source.
