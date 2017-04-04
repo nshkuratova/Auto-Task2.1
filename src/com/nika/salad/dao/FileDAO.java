@@ -28,7 +28,12 @@ public class FileDAO extends BaseDAO {
             try {
                 out.print(saladToString);
             } finally {
-                out.close();
+                if (out != null) {
+                    System.out.println("Closing PrintWriter");
+                    out.close();
+                } else {
+                    System.out.println("PrintWriter not open");
+                }
             }
         } catch (IOException e) {
             throw new RuntimeException();
