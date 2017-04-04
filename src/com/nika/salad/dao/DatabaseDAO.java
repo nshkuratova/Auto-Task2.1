@@ -13,6 +13,7 @@ import java.sql.*;
 public class DatabaseDAO extends BaseDAO {
     /**
      * This method is to be implemented.
+     *
      * @param salad An instance of salad which will be saved in the database.
      */
     public void saveSalad(Salad salad) {
@@ -20,13 +21,14 @@ public class DatabaseDAO extends BaseDAO {
 
     /**
      * Method is used to retrieve data from the database and to return an instance of salad.
+     *
      * @return an instance of salad (a list of vegetables and their weigh which are represented as vegetable portions)
      */
     public Salad readSalad() {
         Salad salad = new Salad();
-        try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/salad?autoReconnect=true&useSSL=false", "root", "root");
-            Statement st = connection.createStatement();
+
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/salad?autoReconnect=true&useSSL=false", "root", "root");
+             Statement st = connection.createStatement();) {
             ResultSet resultSet = st.executeQuery("SELECT vegetables.name, weight from vegetable_portions join vegetables on vegetables.id_veg = vegetable_portions.id_veg;");
             String vegName, weight;
             Vegetable vegetable;
