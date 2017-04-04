@@ -5,7 +5,7 @@ import com.nika.salad.dao.DatabaseDAO;
 import com.nika.salad.dao.FileDAO;
 import com.nika.salad.dao.JsonDAO;
 import com.nika.salad.exceptions.NoVegetablesInSaladException;
-import com.nika.salad.exceptions.WrongIngredientException;
+import com.nika.salad.exceptions.WrongVegetableException;
 import com.nika.salad.exceptions.WrongSortTypeException;
 import com.nika.salad.salad.Salad;
 import com.nika.salad.salad.SaladSorter;
@@ -32,7 +32,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws WrongIngredientException, WrongSortTypeException, NoVegetablesInSaladException, IOException, ClassNotFoundException, ParseException {
+    public static void main(String[] args) throws WrongVegetableException, WrongSortTypeException, NoVegetablesInSaladException, IOException, ClassNotFoundException, ParseException {
 
         System.out.println("How do you want to add vegetables to a salad? \n1. Console,\n2. File,\n3. JSON \n4. Database \n");
         Scanner scanner = new Scanner(System.in);
@@ -264,13 +264,13 @@ public class Main {
                         vegetable = new Radish();
                         break;
                     default:
-                        throw new WrongIngredientException("\nWrong ingredient");
+                        throw new WrongVegetableException("\nWrong ingredient");
                 }
 
                 ingredientNumber++;
                 vegetablePortion = new VegetablePortion(vegetable, ingredientWeight);
                 salad.addVegetable(vegetablePortion);
-            } catch (WrongIngredientException ex) {
+            } catch (WrongVegetableException ex) {
                 System.out.println(ex.getMessage());
             } catch (IllegalArgumentException ex) {
                 System.out.println(ex.getMessage());
