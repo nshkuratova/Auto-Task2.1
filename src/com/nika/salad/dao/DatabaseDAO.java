@@ -1,5 +1,6 @@
 package com.nika.salad.dao;
 
+import com.nika.salad.exceptions.WrongVegetableException;
 import com.nika.salad.salad.Salad;
 import com.nika.salad.salad.VegetablePortion;
 import com.nika.salad.vegetable.Vegetable;
@@ -13,16 +14,19 @@ import java.sql.*;
 public class DatabaseDAO extends BaseDAO {
     /**
      * This method is to be implemented later.
-     * @param salad An instance of salad which will be saved in the database.
+     *
+     * @param salad An instance of salad which will be saved to the external source (database).
      */
     public void saveSalad(Salad salad) {
     }
 
     /**
      * Method is used to retrieve data from the database and to return an instance of salad.
+     *
      * @return an instance of salad (a list of vegetables and their weigh which are represented as vegetable portions)
+     * @throws WrongVegetableException if non-existent vegetable name was passed from the external source
      */
-    public Salad readSalad() {
+    public Salad readSalad() throws WrongVegetableException {
         Salad salad = new Salad();
 
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/salad?autoReconnect=true&useSSL=false", "root", "root");

@@ -1,5 +1,6 @@
 package com.nika.salad.dao;
 
+import com.nika.salad.exceptions.WrongVegetableException;
 import com.nika.salad.salad.Salad;
 import com.nika.salad.salad.VegetablePortion;
 import com.nika.salad.vegetable.Vegetable;
@@ -8,10 +9,16 @@ import java.io.*;
 import java.util.ArrayList;
 
 /**
- * Created by nika.shkuratova on 28.03.2017.
+ * FileDAO class is used to work with files.
+ * The main purpose of the class is to read data from a file and save data to a file.
  */
 public class FileDAO extends BaseDAO {
 
+    /**
+     * Method is used to save data to a file.
+     *
+     * @param salad An instance of salad which will be saved to the external source (file)
+     */
     public void saveSalad(Salad salad) {
         try {
             PrintWriter out = new PrintWriter(new File("./resources/salad.txt"));
@@ -40,7 +47,14 @@ public class FileDAO extends BaseDAO {
         }
     }
 
-    public Salad readSalad() throws IOException {
+    /**
+     * Method is used to retrieve data from the file and to return an instance of salad.
+     *
+     * @return an instance of salad (a list of vegetables and their weigh which are represented as vegetable portions)
+     * @throws IOException             If an input or output exception occurred
+     * @throws WrongVegetableException if non-existent vegetable name was passed from the external source (file)
+     */
+    public Salad readSalad() throws WrongVegetableException, IOException {
         BufferedReader in = new BufferedReader(new FileReader("./resources/salad.txt"));
         String s;
         String[] array;

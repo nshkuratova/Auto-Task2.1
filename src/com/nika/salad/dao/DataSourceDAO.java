@@ -1,6 +1,9 @@
 package com.nika.salad.dao;
 
+import com.nika.salad.exceptions.WrongVegetableException;
 import com.nika.salad.salad.Salad;
+
+import java.io.IOException;
 
 
 /**
@@ -8,16 +11,18 @@ import com.nika.salad.salad.Salad;
  */
 public interface DataSourceDAO {
     /**
-     * Method is used to retrieve data from the database and to return an instance of salad.
+     * Method is used to retrieve data from the external source and to return an instance of salad.
      *
      * @return an instance of salad (a list of vegetables and their weigh which are represented as vegetable portions)
+     * @throws WrongVegetableException if non-existent vegetable name was passed from the external source
+     * @throws IOException             If an input or output exception occurred
      */
-    public Salad readSalad();
+    public Salad readSalad() throws WrongVegetableException, IOException;
 
     /**
-     * This method is to be implemented later.
+     * Method is used to save data to an external source.
      *
-     * @param salad An instance of salad which will be saved in the database.
+     * @param salad An instance of salad which will be saved to the external source
      */
     public void saveSalad(Salad salad);
 }
