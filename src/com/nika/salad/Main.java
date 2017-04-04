@@ -1,6 +1,9 @@
 package com.nika.salad;
 
+import com.nika.salad.dao.DataSourceDAO;
 import com.nika.salad.dao.DatabaseDAO;
+import com.nika.salad.dao.FileDAO;
+import com.nika.salad.dao.JsonDAO;
 import com.nika.salad.exceptions.NoVegetablesInSaladException;
 import com.nika.salad.exceptions.WrongIngredientException;
 import com.nika.salad.exceptions.WrongSortTypeException;
@@ -8,8 +11,6 @@ import com.nika.salad.salad.Salad;
 import com.nika.salad.salad.SaladSorter;
 import com.nika.salad.salad.VegetableFinder;
 import com.nika.salad.salad.VegetablePortion;
-import com.nika.salad.dao.FileDAO;
-import com.nika.salad.dao.JsonDAO;
 import com.nika.salad.salad.vegetablefilter.*;
 import com.nika.salad.vegetable.Vegetable;
 import com.nika.salad.vegetable.Vitamins;
@@ -33,7 +34,7 @@ public class Main {
 
     public static void main(String[] args) throws WrongIngredientException, WrongSortTypeException, NoVegetablesInSaladException, IOException, ClassNotFoundException, ParseException {
 
-        System.out.println("Please select the way to work with the app: \n1. Console,\n2. File,\n3. JSON \n4. Database \n");
+        System.out.println("How do you want to add vegetables to a salad? \n1. Console,\n2. File,\n3. JSON \n4. Database \n");
         Scanner scanner = new Scanner(System.in);
         int inputMethod;
         try {
@@ -46,17 +47,19 @@ public class Main {
                 enterFromConsole(scanner, salad);
             }
             //method used to receive salad ingredients from file
-            else if (inputMethod == 2) {
-                FileDAO file = new FileDAO();
-                salad = file.readSalad();
-                file.saveSalad(salad);
-            } else if (inputMethod == 3) {
-                JsonDAO json = new JsonDAO();
-                salad = json.readSalad();
-            }
-            else if (inputMethod == 4) {
-                DatabaseDAO database = new DatabaseDAO();
-                salad = database.readSalad();
+            else {
+                DataSourceDAO dataSourceDAO;
+                if (inputMethod == 2) {
+                    dataSourceDAO = new FileDAO();
+                } else if (inputMethod == 3) {
+                    dataSourceDAO = new JsonDAO();
+                } else if (inputMethod == 4) {
+                    dataSourceDAO = new DatabaseDAO();
+                } else {
+                    //TODO
+                    throw new NullPointerException();
+                }
+                salad = dataSourceDAO.readSalad();
             }
 
             // if there are no ingredients in salad we can't continue work with the app
@@ -89,12 +92,20 @@ public class Main {
             /*??? maybe it would be better to create a separate method for entering of search criteria,  display of the results and only do search in this method,
             but do not want to complicate the code*/
             searchVegetable(salad, scanner);
+
+            System.out.println("\nDo you want to save salad ina  file? y/n");
+            if (scanner.next().equalsIgnoreCase("Y")) {
+                DataSourceDAO dataSourceDAO = new FileDAO();
+                dataSourceDAO.saveSalad(salad);
+            }
+
         } catch (NoVegetablesInSaladException ex) {
             System.out.println(ex.getMessage());
             System.out.println("The application will be closed.");
             return;
-
         }
+
+
     }
 
     public static void sortSalad(Salad salad, String sortingMethod) {
@@ -207,7 +218,6 @@ public class Main {
             }
         }
     }
-
 
     public static void enterFromConsole(Scanner scanner, Salad salad) {
         System.out.println("\nPlease choose vegetables and their weight for salad.");

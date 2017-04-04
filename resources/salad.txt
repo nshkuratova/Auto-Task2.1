@@ -1,3 +1,1 @@
-Kale: 100.0
-Carrot: 200.0
-Beet: 500.0
+Carrot: 100
