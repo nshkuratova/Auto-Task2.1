@@ -107,9 +107,10 @@ public class Main {
     }
 
     /**
-     * 
-     * @param salad
-     * @param sortingMethod
+     * Method used to structure code: to group all the functionality related to sorting.
+     *
+     * @param salad         an object of salad
+     * @param sortingMethod the type of sorting criteria selected by user
      */
     public static void sortSalad(Salad salad, String sortingMethod) {
 
@@ -142,10 +143,21 @@ public class Main {
 
     }
 
+    /**
+     * Method used to structure code: to group all the functionality related to counting of calories.
+     *
+     * @param salad an object of salad
+     */
     public static void countCalories(Salad salad) {
         System.out.println("CALORIES: " + salad.countCalories());
     }
 
+    /**
+     * Method used to structure code: to group all the functionality related to searching.
+     *
+     * @param salad   an object of salad
+     * @param scanner an object of scanner
+     */
     public static void searchVegetable(Salad salad, Scanner scanner) {
 
         boolean enterMoreSearchParameters = true;
@@ -222,6 +234,12 @@ public class Main {
         }
     }
 
+    /**
+     * Method used to structure code: to group all the functionality related to entering salad ingredients from console.
+     *
+     * @param scanner an object of scanner
+     * @param salad   an object of salad
+     */
     public static void enterFromConsole(Scanner scanner, Salad salad) {
         System.out.println("\nPlease choose vegetables and their weight for salad.");
         System.out.println("1. Carrot\n2. Broccoli\n3. Brussels\n4. Kale\n5. Pepper\n6. Tomato\n7. Beet\n8. Radish");
