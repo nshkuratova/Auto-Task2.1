@@ -6,7 +6,7 @@ import com.nika.salad.vegetable.Vitamins;
 /**
  * Created by nika_shkuratava on 3/6/2017.
  */
-public class Nightshade extends Vegetable {
+public abstract class Nightshade extends Vegetable {
     //color of flowers of Nightshade class of Vegetables
     private final String colorofFlowers;
 

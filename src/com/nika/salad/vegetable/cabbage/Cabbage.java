@@ -4,14 +4,27 @@ import com.nika.salad.vegetable.Vegetable;
 import com.nika.salad.vegetable.Vitamins;
 
 /**
- * Created by nika_shkuratava on 3/6/2017.
+ * Cabbage is an abstract class which is a subclass of a Vegetable class.
+ * The class is used to describe an abstract subculture of a Vegetable.
+ *
+ * @see Vegetable
  */
-public class Cabbage extends Vegetable {
+public abstract class Cabbage extends Vegetable {
 
-    //diameter of a cabbage vegetable in santimeters
+    //diameter of a cabbage vegetable in centimeters
     private final double diameter;
 
-    public Cabbage(double calories, double carbohydrates, double proteins, Vitamins[] vitamins, double diameter) {
+    /**
+     * Constructor with parameters
+     *
+     * @param calories      number of calories in 100g
+     * @param carbohydrates number of carbohydrates in 100g
+     * @param proteins      number of proteins in 100g
+     * @param vitamins      list of vitamins
+     * @param diameter      diameter of the vegetable
+     * @throws IllegalArgumentException if invalid diameter argument was passed
+     */
+    public Cabbage(double calories, double carbohydrates, double proteins, Vitamins[] vitamins, double diameter) throws IllegalArgumentException {
         super(calories, carbohydrates, proteins, vitamins);
         if (diameter <= 0) {
             throw new IllegalArgumentException("Diameter can't be less or equal to zero!");
