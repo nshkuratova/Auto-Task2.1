@@ -6,11 +6,15 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- * Created by nika.shkuratova on 04.03.2017.
+ * VegetableFinder is a class used to search vegetables by different parameters.
  */
 public class VegetableFinder {
     private final Salad salad;
 
+    /**
+     * Constructor with a parameter used to create an object of VegetableFinder class.
+     * @param salad an object of salad in which the search will be conducted
+     */
     public VegetableFinder(Salad salad) {
         if (salad == null) {
             throw new NullPointerException("Salad is null!");
@@ -18,6 +22,11 @@ public class VegetableFinder {
         this.salad = salad;
     }
 
+    /**
+     * Method used to search vegetables according to different search criteria (which are passed as a collection of VegetableFilters).
+     * @param vegetableFilters a collection of search criteria against which the search will be invoked
+     * @return a collection of vegetables which match the search results
+     */
     public Collection<Vegetable> findVegetables(Collection<VegetableFilter> vegetableFilters) {
         if (vegetableFilters == null) {
             throw new NullPointerException("No search parameters are chosen.");
@@ -41,6 +50,9 @@ public class VegetableFinder {
         return vegetableCollection;
     }
 
+    /**
+     * VegetableFilter is an interface which declares a method used to find out if vegetable portion matches the search criteria
+     */
     public interface VegetableFilter {
         boolean isAccepted(VegetablePortion vegetablePortion);
     }
