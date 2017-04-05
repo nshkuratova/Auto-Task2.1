@@ -22,7 +22,7 @@ public abstract class Cabbage extends Vegetable {
      * @param proteins      number of proteins in 100g
      * @param vitamins      list of vitamins
      * @param diameter      diameter of the vegetable
-     * @throws IllegalArgumentException if invalid diameter argument was passed
+     * @throws IllegalArgumentException if invalid diameter parameter was passed
      */
     public Cabbage(double calories, double carbohydrates, double proteins, Vitamins[] vitamins, double diameter) throws IllegalArgumentException {
         super(calories, carbohydrates, proteins, vitamins);
