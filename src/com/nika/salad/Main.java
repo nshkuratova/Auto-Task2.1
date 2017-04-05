@@ -4,9 +4,7 @@ import com.nika.salad.dao.DataSourceDAO;
 import com.nika.salad.dao.DatabaseDAO;
 import com.nika.salad.dao.FileDAO;
 import com.nika.salad.dao.JsonDAO;
-import com.nika.salad.exceptions.NoVegetablesInSaladException;
-import com.nika.salad.exceptions.WrongSortTypeException;
-import com.nika.salad.exceptions.WrongVegetableException;
+import com.nika.salad.exceptions.*;
 import com.nika.salad.salad.Salad;
 import com.nika.salad.salad.SaladSorter;
 import com.nika.salad.salad.VegetableFinder;
@@ -95,29 +93,61 @@ public class Main {
 
             countCalories(salad);
 
-            System.out.println("\n======SORTING======");
-            System.out.println("\nChoose parameter for sorting: \n1. Calories.  \n2. Proteins \n3. Carbohydrates\n");
-            String sortingMethod = scanner.next();
+            flag = true;
+            while (flag) {
+                boolean exceptionOccurred = false;
+                System.out.println("\n======SORTING======");
+                System.out.println("\nChoose parameter for sorting: \n1. Calories.  \n2. Proteins \n3. Carbohydrates\n");
+                String sortingMethod = scanner.next();
 
-            //method used to sort the vegetables in a salad according to the chosen parameter and to display the results
-            /*??? maybe it would be better to create a separate method for display of the results and only do sorting in this method,
-            but do not want to complicate the code*/
-            sortSalad(salad, sortingMethod);
+                try {
+                    //method used to sort the vegetables in a salad according to the chosen parameter and to display the results
+                    sortSalad(salad, sortingMethod);
+                } catch (InputMismatchException | WrongSortTypeException ex) {
+                    System.out.println("Incorrect input");
+                    exceptionOccurred = true;
+                }
+                if (exceptionOccurred) {
+                    System.out.println("\nDo you want to try once more? y/n");
+                    scanner.nextLine();
+                    if (!scanner.next().equalsIgnoreCase("Y")) {
+                        flag = false;
+                    }
+                } else {
+                    flag = false;
+                }
+            }
 
-            System.out.println("\n======SEARCH======");
-            System.out.println("Select search parameter: ");
-            System.out.print("1. Vitamins");
-            System.out.print("\n2. Calories");
-            System.out.print("\n3. Proteins");
-            System.out.print("\n4. Carbohydrates");
-            System.out.print("\n5. Weight\n\n");
+            flag = true;
+            while (flag) {
+                boolean exceptionOccurred = false;
+                System.out.println("\n======SEARCH======");
+                System.out.println("Select search parameter: ");
+                System.out.print("1. Vitamins");
+                System.out.print("\n2. Calories");
+                System.out.print("\n3. Proteins");
+                System.out.print("\n4. Carbohydrates");
+                System.out.print("\n5. Weight\n\n");
 
-            //method used to search vegetables by different parameters and to display the results
-            /*??? maybe it would be better to create a separate method for entering of search criteria,  display of the results and only do search in this method,
-            but do not want to complicate the code*/
-            searchVegetable(salad, scanner);
+                try {
+                    //method used to search vegetables by different parameters and to display the results
+                    searchVegetable(salad, scanner);
+                } catch (InputMismatchException | WrongSearchTypeException | WrongVitaminTypeException ex) {
+                    System.out.println("Incorrect input");
+                    exceptionOccurred = true;
+                }
+                if (exceptionOccurred) {
+                    System.out.println("\nDo you want to try once more? y/n");
+                    scanner.nextLine();
+                    if (!scanner.next().equalsIgnoreCase("Y")) {
+                        flag = false;
+                    }
+                } else {
+                    flag = false;
+                }
+            }
 
-            System.out.println("\nDo you want to save salad in a  file? y/n");
+            System.out.println("\nDo you want to save salad in a file? y/n\n");
             if (scanner.next().equalsIgnoreCase("Y")) {
                 DataSourceDAO dataSourceDAO = new FileDAO();
                 dataSourceDAO.saveSalad(salad);
@@ -139,33 +169,29 @@ public class Main {
      * @param salad         an object of salad
      * @param sortingMethod the type of sorting criteria selected by user
      */
-    public static void sortSalad(Salad salad, String sortingMethod) {
+    public static void sortSalad(Salad salad, String sortingMethod) throws WrongSortTypeException {
 
         SaladSorter saladSorter = new SaladSorter(salad);
         List<Vegetable> sortedVegetables;
 
-        try {
-            switch (sortingMethod) {
-                case "1":
-                    sortedVegetables = saladSorter.sortBy(new SaladSorter.CaloriesComparator());
-                    break;
-                case "2":
-                    sortedVegetables = saladSorter.sortBy(new SaladSorter.ProteintComparator());
-                    break;
-                case "3":
-                    sortedVegetables = saladSorter.sortBy(new SaladSorter.CarbohydratesComparator());
-                    break;
-                default:
-                    throw new WrongSortTypeException("Wrong sorting parameter");
-            }
+        switch (sortingMethod) {
+            case "1":
+                sortedVegetables = saladSorter.sortBy(new SaladSorter.CaloriesComparator());
+                break;
+            case "2":
+                sortedVegetables = saladSorter.sortBy(new SaladSorter.ProteintComparator());
+                break;
+            case "3":
+                sortedVegetables = saladSorter.sortBy(new SaladSorter.CarbohydratesComparator());
+                break;
+            default:
+                throw new WrongSortTypeException("Wrong sorting parameter");
+        }
 
-            System.out.println("\nSORTED VEGETABLES:");
-            System.out.println("\nNAME         CALORIES   PROTEINS CARBOHYDRATES");
-            for (Vegetable veg : sortedVegetables) {
-                System.out.println(veg + "      " + veg.getCalories() + "       " + veg.getProteins() + "       " + veg.getCarbohydrates());
-            }
-        } catch (WrongSortTypeException ex) {
-            System.out.println(ex.getMessage());
+        System.out.println("\nSORTED VEGETABLES:");
+        System.out.println("\nNAME         CALORIES   PROTEINS CARBOHYDRATES");
+        for (Vegetable veg : sortedVegetables) {
+            System.out.println(veg + "      " + veg.getCalories() + "       " + veg.getProteins() + "       " + veg.getCarbohydrates());
         }
 
     }
@@ -185,7 +211,7 @@ public class Main {
      * @param salad   an object of salad
      * @param scanner an object of scanner
      */
-    public static void searchVegetable(Salad salad, Scanner scanner) {
+    public static void searchVegetable(Salad salad, Scanner scanner) throws WrongSearchTypeException, WrongVitaminTypeException {
 
         boolean enterMoreSearchParameters = true;
         Collection<VegetableFinder.VegetableFilter> vegetableFilters = new ArrayList<>();
@@ -202,8 +228,12 @@ public class Main {
                     String[] enteredVitamins = temp.toUpperCase().split(",");
                     Vitamins[] vit = new Vitamins[enteredVitamins.length];
 
-                    for (int j = 0; j < enteredVitamins.length; j++) {
-                        vit[j] = Vitamins.valueOf(enteredVitamins[j]);
+                    try {
+                        for (int j = 0; j < enteredVitamins.length; j++) {
+                            vit[j] = Vitamins.valueOf(enteredVitamins[j]);
+                        }
+                    } catch (IllegalArgumentException ex){
+                        throw new WrongVitaminTypeException();
                     }
 
                     VitaminsFilter vitaminsFilter = new VitaminsFilter(vit);
@@ -242,7 +272,7 @@ public class Main {
                     vegetableFilters.add(weightFilter);
                     break;
                 default:
-                    break;
+                    throw new WrongSearchTypeException();
             }
 
             System.out.println("\nAdd more search parameters? (y\\n)");
@@ -324,8 +354,8 @@ public class Main {
                 System.out.println("Invalid argument.");
             } finally {
                 scanner.nextLine();
-                System.out.println("\nPrepare salad? (y\\n)");
-                if (scanner.next().equalsIgnoreCase("Y")) {
+                System.out.println("\nContinue entering vegetables? (y\\n)");
+                if (scanner.next().equalsIgnoreCase("N")) {
                     continueEnteringIngredientsFlag = false;
                 }
             }
