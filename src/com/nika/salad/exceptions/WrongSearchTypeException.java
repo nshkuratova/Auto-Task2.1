@@ -3,7 +3,7 @@ package com.nika.salad.exceptions;
 /**
  * A custom user exception which is thrown if wrong searching parameter is chosen by the user.
  */
-public class WrongSearchTypeException extends Exception  {
+public class WrongSearchTypeException extends Exception {
     public WrongSearchTypeException() {
     }
 

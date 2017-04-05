@@ -232,7 +232,7 @@ public class Main {
                         for (int j = 0; j < enteredVitamins.length; j++) {
                             vit[j] = Vitamins.valueOf(enteredVitamins[j]);
                         }
-                    } catch (IllegalArgumentException ex){
+                    } catch (IllegalArgumentException ex) {
                         throw new WrongVitaminTypeException();
                     }
 
