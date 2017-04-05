@@ -13,6 +13,7 @@ public class VegetableFinder {
 
     /**
      * Constructor with a parameter used to create an object of VegetableFinder class.
+     *
      * @param salad an object of salad in which the search will be conducted
      */
     public VegetableFinder(Salad salad) {
@@ -24,6 +25,7 @@ public class VegetableFinder {
 
     /**
      * Method used to search vegetables according to different search criteria (which are passed as a collection of VegetableFilters).
+     *
      * @param vegetableFilters a collection of search criteria against which the search will be invoked
      * @return a collection of vegetables which match the search results
      */

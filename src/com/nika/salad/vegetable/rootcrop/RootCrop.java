@@ -17,11 +17,11 @@ public abstract class RootCrop extends Vegetable {
     /**
      * Constructor with parameters
      *
-     * @param calories      number of calories in 100g
-     * @param carbohydrates number of carbohydrates in 100g
-     * @param proteins      number of proteins in 100g
-     * @param vitamins      list of vitamins
-     * @param lengthofRootcropPart      the length of rootcrop part of the vegetable
+     * @param calories             number of calories in 1g
+     * @param carbohydrates        number of carbohydrates in 1g
+     * @param proteins             number of proteins in 1g
+     * @param vitamins             list of vitamins
+     * @param lengthofRootcropPart the length of rootcrop part of the vegetable
      * @throws IllegalArgumentException if invalid length parameter was passed
      */
     public RootCrop(double calories, double carbohydrates, double proteins, Vitamins[] vitamins, double lengthofRootcropPart) {

@@ -5,8 +5,8 @@ import com.nika.salad.dao.DatabaseDAO;
 import com.nika.salad.dao.FileDAO;
 import com.nika.salad.dao.JsonDAO;
 import com.nika.salad.exceptions.NoVegetablesInSaladException;
-import com.nika.salad.exceptions.WrongVegetableException;
 import com.nika.salad.exceptions.WrongSortTypeException;
+import com.nika.salad.exceptions.WrongVegetableException;
 import com.nika.salad.salad.Salad;
 import com.nika.salad.salad.SaladSorter;
 import com.nika.salad.salad.VegetableFinder;
@@ -22,9 +22,7 @@ import com.nika.salad.vegetable.nightshade.Tomato;
 import com.nika.salad.vegetable.rootcrop.Beet;
 import com.nika.salad.vegetable.rootcrop.Carrot;
 import com.nika.salad.vegetable.rootcrop.Radish;
-import org.json.simple.parser.ParseException;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -32,7 +30,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         System.out.println("How do you want to add vegetables to a salad? \n1. Console,\n2. File,\n3. JSON \n4. Database \n");
         Scanner scanner = new Scanner(System.in);
@@ -108,6 +106,11 @@ public class Main {
 
     }
 
+    /**
+     * 
+     * @param salad
+     * @param sortingMethod
+     */
     public static void sortSalad(Salad salad, String sortingMethod) {
 
         SaladSorter saladSorter = new SaladSorter(salad);

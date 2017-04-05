@@ -16,9 +16,9 @@ public abstract class Nightshade extends Vegetable {
     /**
      * Constructor with parameters
      *
-     * @param calories       number of calories in 100g
-     * @param carbohydrates  number of carbohydrates in 100g
-     * @param proteins       number of proteins in 100g
+     * @param calories       number of calories in 1g
+     * @param carbohydrates  number of carbohydrates in 1g
+     * @param proteins       number of proteins in 1g
      * @param vitamins       list of vitamins
      * @param colorofFlowers color of flowers
      */

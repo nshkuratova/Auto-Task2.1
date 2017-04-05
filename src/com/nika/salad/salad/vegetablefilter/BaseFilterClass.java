@@ -5,6 +5,7 @@ import com.nika.salad.salad.VegetableFinder;
 /**
  * BaseFilterClass is an abstract base class used to define common fields and method to check minimum and maximum values' validity.
  * The class implements VegetableFinder.VegetableFilter interface.
+ *
  * @see VegetableFinder.VegetableFilter
  */
 public abstract class BaseFilterClass implements VegetableFinder.VegetableFilter {
