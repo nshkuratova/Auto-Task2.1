@@ -22,42 +22,62 @@ import com.nika.salad.vegetable.nightshade.Tomato;
 import com.nika.salad.vegetable.rootcrop.Beet;
 import com.nika.salad.vegetable.rootcrop.Carrot;
 import com.nika.salad.vegetable.rootcrop.Radish;
+import org.json.simple.parser.ParseException;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Scanner;
+import java.io.IOException;
+import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("How do you want to add vegetables to a salad? \n1. Console,\n2. File,\n3. JSON \n4. Database \n");
         Scanner scanner = new Scanner(System.in);
-        int inputMethod;
+        int inputMethod = 0;
+        boolean flag = true;
+
+
+        Salad salad = new Salad();
         try {
-            inputMethod = scanner.nextInt();
+            while (flag) {
+                System.out.println("\nHow do you want to add vegetables to a salad? \n1. Console,\n2. File,\n3. JSON \n4. Database \n");
 
-            Salad salad = new Salad();
-
-            if (inputMethod == 1) {
-                //method used to receive salad ingredients from console
-                enterFromConsole(scanner, salad);
-            }
-            //method used to receive salad ingredients from file
-            else {
-                DataSourceDAO dataSourceDAO;
-                if (inputMethod == 2) {
-                    dataSourceDAO = new FileDAO();
-                } else if (inputMethod == 3) {
-                    dataSourceDAO = new JsonDAO();
-                } else if (inputMethod == 4) {
-                    dataSourceDAO = new DatabaseDAO();
-                } else {
-                    //TODO
-                    throw new NullPointerException();
+                try {
+                    inputMethod = scanner.nextInt();
+                    if (inputMethod == 1) {
+                        //used to receive salad ingredients from console
+                        enterFromConsole(scanner, salad);
+                    }
+                    //used to receive salad ingredients from external sources
+                    else {
+                        DataSourceDAO dataSourceDAO;
+                        if (inputMethod == 2) {
+                            dataSourceDAO = new FileDAO();
+                        } else if (inputMethod == 3) {
+                            dataSourceDAO = new JsonDAO();
+                        } else if (inputMethod == 4) {
+                            dataSourceDAO = new DatabaseDAO();
+                        } else {
+                            throw new NullPointerException();
+                        }
+                        salad = dataSourceDAO.readSalad();
+                    }
+                } catch (WrongVegetableException ex) {
+                    System.out.println("\nWrong vegetable.");
+                } catch (ParseException ex) {
+                    System.out.println("\nParse exception.");
+                    return;
+                } catch (IOException ex) {
+                    System.out.println("\nException working with the file.");
+                } catch (NullPointerException ex) {
+                    System.out.println("\nWrong source.");
+                } catch (InputMismatchException ex) {
+                    System.out.println("Incorrect number.");
                 }
-                salad = dataSourceDAO.readSalad();
+                System.out.println("\nDo you want to try once more? y/n");
+                scanner.nextLine();
+                if (!scanner.next().equalsIgnoreCase("Y")) {
+                    flag = false;
+                }
             }
 
             // if there are no ingredients in salad we can't continue work with the app
@@ -66,7 +86,6 @@ public class Main {
             }
             salad.mixSalad();
 
-            //method used to count and display the number of calories in a salad
             countCalories(salad);
 
             System.out.println("\n======SORTING======");
@@ -97,13 +116,14 @@ public class Main {
                 dataSourceDAO.saveSalad(salad);
             }
 
-        } catch (NoVegetablesInSaladException ex) {
+        } catch (
+                NoVegetablesInSaladException ex)
+
+        {
             System.out.println(ex.getMessage());
             System.out.println("The application will be closed.");
             return;
         }
-
-
     }
 
     /**
@@ -254,11 +274,12 @@ public class Main {
 
         while (continueEnteringIngredientsFlag) {
             System.out.print("\nPlease enter NUMBER of ingredient " + ingredientNumber + ": ");
-            ingredient = scanner.nextInt();
-            System.out.print("Please enter WEIGHT of ingredient " + ingredientNumber + ": ");
-            ingredientWeight = scanner.nextDouble();
-
             try {
+                ingredient = scanner.nextInt();
+                System.out.print("Please enter WEIGHT of ingredient " + ingredientNumber + ": ");
+                ingredientWeight = scanner.nextDouble();
+
+
                 switch (ingredient) {
                     case 1:
                         vegetable = new Carrot();
@@ -294,6 +315,8 @@ public class Main {
             } catch (WrongVegetableException ex) {
                 System.out.println(ex.getMessage());
             } catch (IllegalArgumentException ex) {
+                System.out.println(ex.getMessage());
+            } catch (InputMismatchException ex) {
                 System.out.println(ex.getMessage());
             }
 
