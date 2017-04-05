@@ -35,12 +35,11 @@ public class Main {
         int inputMethod = 0;
         boolean flag = true;
 
-
         Salad salad = new Salad();
         try {
             while (flag) {
                 System.out.println("\nHow do you want to add vegetables to a salad? \n1. Console,\n2. File,\n3. JSON \n4. Database \n");
-
+                boolean exceptionOccurred = false;
                 try {
                     inputMethod = scanner.nextInt();
                     if (inputMethod == 1) {
@@ -63,19 +62,27 @@ public class Main {
                     }
                 } catch (WrongVegetableException ex) {
                     System.out.println("\nWrong vegetable.");
+                    exceptionOccurred = true;
                 } catch (ParseException ex) {
                     System.out.println("\nParse exception.");
-                    return;
+                    exceptionOccurred = true;
                 } catch (IOException ex) {
                     System.out.println("\nException working with the file.");
+                    exceptionOccurred = true;
                 } catch (NullPointerException ex) {
-                    System.out.println("\nWrong source.");
+                    System.out.println("\nEmpty source.");
+                    exceptionOccurred = true;
                 } catch (InputMismatchException ex) {
                     System.out.println("Incorrect number.");
+                    exceptionOccurred = true;
                 }
-                System.out.println("\nDo you want to try once more? y/n");
-                scanner.nextLine();
-                if (!scanner.next().equalsIgnoreCase("Y")) {
+                if (exceptionOccurred) {
+                    System.out.println("\nDo you want to try once more? y/n");
+                    scanner.nextLine();
+                    if (!scanner.next().equalsIgnoreCase("Y")) {
+                        flag = false;
+                    }
+                } else {
                     flag = false;
                 }
             }
@@ -110,7 +117,7 @@ public class Main {
             but do not want to complicate the code*/
             searchVegetable(salad, scanner);
 
-            System.out.println("\nDo you want to save salad ina  file? y/n");
+            System.out.println("\nDo you want to save salad in a  file? y/n");
             if (scanner.next().equalsIgnoreCase("Y")) {
                 DataSourceDAO dataSourceDAO = new FileDAO();
                 dataSourceDAO.saveSalad(salad);
@@ -276,10 +283,6 @@ public class Main {
             System.out.print("\nPlease enter NUMBER of ingredient " + ingredientNumber + ": ");
             try {
                 ingredient = scanner.nextInt();
-                System.out.print("Please enter WEIGHT of ingredient " + ingredientNumber + ": ");
-                ingredientWeight = scanner.nextDouble();
-
-
                 switch (ingredient) {
                     case 1:
                         vegetable = new Carrot();
@@ -308,22 +311,23 @@ public class Main {
                     default:
                         throw new WrongVegetableException("\nWrong ingredient");
                 }
-
+                System.out.print("Please enter WEIGHT of ingredient " + ingredientNumber + ": ");
+                ingredientWeight = scanner.nextDouble();
                 ingredientNumber++;
                 vegetablePortion = new VegetablePortion(vegetable, ingredientWeight);
                 salad.addVegetable(vegetablePortion);
             } catch (WrongVegetableException ex) {
-                System.out.println(ex.getMessage());
+                System.out.println("Wrong vegetable.");
             } catch (IllegalArgumentException ex) {
-                System.out.println(ex.getMessage());
+                System.out.println("Wrong argument type.");
             } catch (InputMismatchException ex) {
-                System.out.println(ex.getMessage());
-            }
-
-            System.out.println("\nPrepare salad? (y\\n)");
-
-            if (scanner.next().equalsIgnoreCase("Y")) {
-                continueEnteringIngredientsFlag = false;
+                System.out.println("Invalid argument.");
+            } finally {
+                scanner.nextLine();
+                System.out.println("\nPrepare salad? (y\\n)");
+                if (scanner.next().equalsIgnoreCase("Y")) {
+                    continueEnteringIngredientsFlag = false;
+                }
             }
         }
     }
