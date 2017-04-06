@@ -5,6 +5,7 @@ import com.nika.salad.salad.Salad;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 
 /**
@@ -19,12 +20,12 @@ public interface DataSourceDAO {
      * @throws IOException             If an input or output exception occurred
      * @throws ParseException          If an error while parsing json has occurred
      */
-    public Salad readSalad() throws WrongVegetableException, IOException, ParseException;
+    public Salad readSalad() throws WrongVegetableException, IOException, ParseException, SQLException;
 
     /**
      * Method is used to save data to an external source.
      *
      * @param salad An instance of salad which will be saved to the external source
      */
-    public void saveSalad(Salad salad);
+    public void saveSalad(Salad salad) throws IOException;
 }

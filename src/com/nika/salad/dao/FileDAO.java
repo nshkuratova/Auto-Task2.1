@@ -19,31 +19,27 @@ public class FileDAO extends BaseDAO {
      *
      * @param salad An instance of salad which will be saved to the external source (file)
      */
-    public void saveSalad(Salad salad) {
+    public void saveSalad(Salad salad) throws IOException {
+        PrintWriter out = new PrintWriter(new File("./resources/salad.txt"));
+
+        String saladToString = "";
+
+        ArrayList<VegetablePortion> vegPortionsList = new ArrayList<>(salad.getVegetablePortions());
+
+        for (int i = 0; i < vegPortionsList.size(); i++) {
+            saladToString += vegPortionsList.get(i).getVegetable().toString() + ": " + vegPortionsList.get(i).getWeight();
+            if (i != vegPortionsList.size() - 1) saladToString += "\r\n";
+        }
+
         try {
-            PrintWriter out = new PrintWriter(new File("./resources/salad.txt"));
-
-            String saladToString = "";
-
-            ArrayList<VegetablePortion> vegPortionsList = new ArrayList<>(salad.getVegetablePortions());
-
-            for (int i = 0; i < vegPortionsList.size(); i++) {
-                saladToString += vegPortionsList.get(i).getVegetable().toString() + ": " + vegPortionsList.get(i).getWeight();
-                if (i != vegPortionsList.size() - 1) saladToString += "\r\n";
+            out.print(saladToString);
+        } finally {
+            if (out != null) {
+                System.out.println("Closing PrintWriter");
+                out.close();
+            } else {
+                System.out.println("PrintWriter not open");
             }
-
-            try {
-                out.print(saladToString);
-            } finally {
-                if (out != null) {
-                    System.out.println("Closing PrintWriter");
-                    out.close();
-                } else {
-                    System.out.println("PrintWriter not open");
-                }
-            }
-        } catch (IOException e) {
-            throw new RuntimeException();
         }
     }
 

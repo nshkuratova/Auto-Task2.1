@@ -23,6 +23,7 @@ import com.nika.salad.vegetable.rootcrop.Radish;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.*;
 
 public class Main {
@@ -60,6 +61,9 @@ public class Main {
                     }
                 } catch (WrongVegetableException ex) {
                     System.out.println("\nWrong vegetable.");
+                    exceptionOccurred = true;
+                } catch (SQLException ex) {
+                    System.out.println("\nProblems with establishing connection to Database.");
                     exceptionOccurred = true;
                 } catch (ParseException ex) {
                     System.out.println("\nParse exception.");
@@ -147,10 +151,14 @@ public class Main {
                 }
             }
 
-            System.out.println("\nDo you want to save salad in a file? y/n\n");
-            if (scanner.next().equalsIgnoreCase("Y")) {
-                DataSourceDAO dataSourceDAO = new FileDAO();
-                dataSourceDAO.saveSalad(salad);
+            try {
+                System.out.println("\nDo you want to save salad in a file? y/n\n");
+                if (scanner.next().equalsIgnoreCase("Y")) {
+                    DataSourceDAO dataSourceDAO = new FileDAO();
+                    dataSourceDAO.saveSalad(salad);
+                }
+            } catch (IOException ex) {
+                System.out.println("Problems saving salad to a file.");
             }
 
         } catch (

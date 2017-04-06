@@ -26,7 +26,7 @@ public class DatabaseDAO extends BaseDAO {
      * @return an instance of salad (a list of vegetables and their weigh which are represented as vegetable portions)
      * @throws WrongVegetableException if non-existent vegetable name was passed from the external source
      */
-    public Salad readSalad() throws WrongVegetableException {
+    public Salad readSalad() throws WrongVegetableException, SQLException {
         Salad salad = new Salad();
 
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/salad?autoReconnect=true&useSSL=false", "root", "root");
@@ -46,8 +46,6 @@ public class DatabaseDAO extends BaseDAO {
             }
             st.close();
             connection.close();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
         }
         return salad;
     }
