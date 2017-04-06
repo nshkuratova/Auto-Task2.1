@@ -1,6 +1,8 @@
+CREATE DATABASE  IF NOT EXISTS `salad` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `salad`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: salad
+-- Host: localhost    Database: salad
 -- ------------------------------------------------------
 -- Server version	5.7.17-log
 
@@ -29,7 +31,7 @@ CREATE TABLE `vegetable_portions` (
   PRIMARY KEY (`id_veg_portion`),
   KEY `vegetable_id_idx` (`id_veg`),
   CONSTRAINT `vegetable_id` FOREIGN KEY (`id_veg`) REFERENCES `vegetables` (`id_veg`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +40,33 @@ CREATE TABLE `vegetable_portions` (
 
 LOCK TABLES `vegetable_portions` WRITE;
 /*!40000 ALTER TABLE `vegetable_portions` DISABLE KEYS */;
+INSERT INTO `vegetable_portions` VALUES (1,1,100),(2,2,200);
 /*!40000 ALTER TABLE `vegetable_portions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `vegetables`
+--
+
+DROP TABLE IF EXISTS `vegetables`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vegetables` (
+  `id_veg` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_veg`),
+  UNIQUE KEY `id_veg_UNIQUE` (`id_veg`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `vegetables`
+--
+
+LOCK TABLES `vegetables` WRITE;
+/*!40000 ALTER TABLE `vegetables` DISABLE KEYS */;
+INSERT INTO `vegetables` VALUES (1,'Carrot'),(2,'Beet');
+/*!40000 ALTER TABLE `vegetables` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +78,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-31  0:18:58
+-- Dump completed on 2017-04-06 11:54:51
