@@ -136,7 +136,7 @@ public class Main {
                 try {
                     //method used to search vegetables by different parameters and to display the results
                     searchVegetable(salad, scanner);
-                } catch (InputMismatchException | WrongSearchTypeException | WrongVitaminTypeException ex) {
+                } catch (InputMismatchException | WrongSearchTypeException | WrongVitaminTypeException | IllegalArgumentException ex ) {
                     System.out.println("Incorrect input");
                     exceptionOccurred = true;
                 }
