@@ -1,3 +1,5 @@
-Kale: 100.0
-Carrot: 200.0
-Beet: 500.0
+Carrot: 100.0
+Broccoli: 200.0
+Brussels: 300.0
+Kale: 400.0
+Pepper: 500.0
